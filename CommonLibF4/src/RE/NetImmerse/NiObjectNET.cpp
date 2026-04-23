@@ -1,0 +1,11 @@
+#include "C:/cpp/CommonLibF4/build/CommonLibF4/CMakeFiles/CommonLibF4.dir/Release/cmake_pch.hxx"
+#include "RE/NetImmerse/NiObjectNET.h"
+
+#include "RE/NetImmerse/NiTimeController.h"
+
+namespace RE
+{
+	NiObjectNET::NiObjectNET() { stl::emplace_vtable(this); }
+
+	NiObjectNET::~NiObjectNET() {}  // NOLINT(modernize-use-equals-default)
+}
