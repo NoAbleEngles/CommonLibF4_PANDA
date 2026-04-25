@@ -55,9 +55,9 @@ namespace RE
 		}
 
 		// NiObject overrides
-		virtual NiObject* CreateClone(NiCloningProcess& a_cloneData) override { return nullptr; };  // 1A
-		virtual void LoadBinary(NiStream& a_stream) override {};                                    // 1B
-		virtual void SaveBinary(NiStream& a_stream) override {};                                    // 1E
+		virtual NiObject* CreateClone([[maybe_unused]] NiCloningProcess& a_cloneData) override { return nullptr; };  // 1A
+		virtual void LoadBinary([[maybe_unused]] NiStream& a_stream) override {};                                    // 1B
+		virtual void SaveBinary([[maybe_unused]] NiStream& a_stream) override {};                                    // 1E
 
 		// BSClothExtraData API (from bin/xrefs)
 		void CopyMembers(NiCloningProcess& a_cloneData)

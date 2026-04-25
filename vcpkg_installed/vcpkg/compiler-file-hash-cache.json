@@ -1,0 +1,20 @@
+{
+  "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe" : 
+  {
+    "hash" : "cd1642e6909957c890c4ea565c287bcb8e338d33",
+    "size" : 677968,
+    "timestamp" : 1771947131
+  },
+  "C:/Strawberry/c/bin/c++.exe" : 
+  {
+    "hash" : "c603ae2e110b02e58d39cb4cb3886104e451de8c",
+    "size" : 1701390,
+    "timestamp" : 1685892296
+  },
+  "C:/Strawberry/c/bin/gcc.exe" : 
+  {
+    "hash" : "2a050c5d493625adc936c4761a2dcf2ba546fefc",
+    "size" : 1697806,
+    "timestamp" : 1685892296
+  }
+}

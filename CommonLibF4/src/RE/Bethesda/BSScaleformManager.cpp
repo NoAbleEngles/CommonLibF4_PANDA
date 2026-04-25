@@ -1,4 +1,4 @@
-#include "C:/cpp/CommonLibF4/build/CommonLibF4/CMakeFiles/CommonLibF4.dir/Release/cmake_pch.hxx"
+﻿#include "F4SE/Impl/PCH.h"
 #include "RE/Bethesda/BSScaleformManager.h"
 
 #include "RE/Bethesda/BSSystemFileStreamer.h"
@@ -49,3 +49,4 @@ namespace RE
 		return true;
 	}
 }
+

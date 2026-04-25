@@ -35,14 +35,14 @@ namespace RE
 			return func(this, extraData);
 		}
 
-		NiExtraData* GetExtraData(const BSFixedString& name) {
+		NiExtraData* GetExtraData(const BSFixedString& strName) {
 			using func_t = decltype(&NiObjectNET::GetExtraData);
 			REL::Relocation<func_t> func{ REL::Offset(0x1B97A10) };
-			return func(this, name);
+			return func(this, strName);
 		}
 
-		bool HasExtraData(const BSFixedString& name) {
-			return GetExtraData(name) != nullptr;
+		bool HasExtraData(const BSFixedString& strName) {
+			return GetExtraData(strName) != nullptr;
 		}
 	};
 	static_assert(sizeof(NiObjectNET) == 0x28);

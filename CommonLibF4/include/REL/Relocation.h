@@ -1,5 +1,5 @@
-#pragma once
-#include "C:/cpp/CommonLibF4/build/CommonLibF4/CMakeFiles/CommonLibF4.dir/Release/cmake_pch.hxx"
+﻿#pragma once
+#include "F4SE/Impl/PCH.h"
 #include <cstdint>
 #define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
 	template <                                                                                    \
@@ -769,3 +769,4 @@ namespace REL
 #undef REL_MAKE_MEMBER_FUNCTION_POD_TYPE
 #undef REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER
 #undef REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL
+

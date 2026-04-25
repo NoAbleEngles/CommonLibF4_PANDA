@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.20)
 # ---- Options ----
 
 option(COPY_BUILD "Copy the build output to the Fallout 4 directory." OFF)
+option(F4_SUPPORT_NG "Build for Fallout 4 Next-Gen version (1.11+)" OFF)
 
 # ---- Cache build vars ----
 
@@ -110,6 +111,19 @@ target_compile_definitions(
 	PRIVATE
 		_UNICODE
 )
+
+# ---- Fallout 4 Version Support ----
+
+if (F4_SUPPORT_NG)
+	message(STATUS "Building for Fallout 4 Next-Gen (1.11+)")
+	target_compile_definitions(
+		${PROJECT_NAME}
+		PRIVATE
+			F4_SUPPORT_NG
+	)
+else()
+	message(STATUS "Building for Fallout 4 Original Game (1.10.163 and below)")
+endif()
 
 target_compile_features(
 	${PROJECT_NAME}

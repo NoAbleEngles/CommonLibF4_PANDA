@@ -1,4 +1,4 @@
-#include "C:/cpp/CommonLibF4/build/CommonLibF4/CMakeFiles/CommonLibF4.dir/Release/cmake_pch.hxx"
+﻿#include "F4SE/Impl/PCH.h"
 #include "RE/Bethesda/CRC.h"
 
 #include "RE/Bethesda/BGSInventoryInterface.h"
@@ -10,3 +10,4 @@ namespace RE
 		return BSCRC32<std::uint32_t>()(a_data.id);
 	}
 }
+

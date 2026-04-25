@@ -1,4 +1,4 @@
-#include "C:/cpp/CommonLibF4/build/CommonLibF4/CMakeFiles/CommonLibF4.dir/Release/cmake_pch.hxx"
+﻿#include "F4SE/Impl/PCH.h"
 #include "RE/Bethesda/BSScript/Struct.h"
 
 namespace RE::BSScript
@@ -15,3 +15,4 @@ namespace RE::BSScript
 		}
 	}
 }
+

@@ -1,4 +1,4 @@
-#include "C:/cpp/CommonLibF4/build/CommonLibF4/CMakeFiles/CommonLibF4.dir/Release/cmake_pch.hxx"
+﻿#include "F4SE/Impl/PCH.h"
 #include "RE/Fallout.h"
 
 namespace RE
@@ -283,3 +283,4 @@ namespace RE
 	template class SettingCollectionMap<Setting>;
 	static_assert(sizeof(SettingCollectionMap<Setting>) == 0x138);
 }
+
