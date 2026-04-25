@@ -193,7 +193,9 @@ set(SOURCES
 	include/RE/NetImmerse/NiTransform.h
 	include/RE/NiRTTI_IDs.h
 	include/RE/RTTI.h
-	include/RE/RTTI_IDs.h
+include/RE/RTTI_IDs.h
+include/RE/RTTI_IDs_Template.h
+include/RE/RTTI_IDs_Versioned.h
 	include/RE/Scaleform/GFx/GFx_ASMovieRootBase.h
 	include/RE/Scaleform/GFx/GFx_Loader.h
 	include/RE/Scaleform/GFx/GFx_Log.h
@@ -224,11 +226,15 @@ set(SOURCES
 	include/RE/Scaleform/Render/Render_TreeNode.h
 	include/RE/Scaleform/Render/Render_Types2D.h
 	include/RE/Scaleform/Render/Render_Viewport.h
-	include/RE/VTABLE_IDs.h
+include/RE/VTABLE_IDs.h
+include/RE/VTABLE_IDs_Template.h
+include/RE/VTABLE_IDs_Versioned.h
 	include/RE/msvc/functional.h
 	include/RE/msvc/memory.h
 	include/RE/msvc/typeinfo.h
-	include/REL/Relocation.h
+include/REL/Relocation.h
+include/REL/Version.h
+include/REL/VersionInfo.h
 	src/F4SE/API.cpp
 	src/F4SE/Impl/PCH.cpp
 	src/F4SE/Impl/WinAPI.cpp
