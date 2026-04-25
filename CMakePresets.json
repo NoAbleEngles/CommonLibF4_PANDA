@@ -22,7 +22,15 @@
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": {
           "type": "STRING",
-          "value": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake"
+          "value": "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/scripts/buildsystems/vcpkg.cmake"
+        },
+        "VCPKG_LINKAGE": {
+          "type": "STRING",
+          "value": "static"
+        },
+        "VCPKG_CRT_LINKAGE": {
+          "type": "STRING",
+          "value": "dynamic"
         }
       },
       "hidden": true,
@@ -47,6 +55,10 @@
           "value": "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL"
         },
         "VCPKG_TARGET_TRIPLET": {
+          "type": "STRING",
+          "value": "x64-windows-static-md"
+        },
+        "VCPKG_HOST_TRIPLET": {
           "type": "STRING",
           "value": "x64-windows-static-md"
         }
@@ -77,7 +89,28 @@
         "windows"
       ],
       "name": "vs2022-windows-vcpkg",
-      "toolset": "v143"
+      "toolset": "v143",
+      "architecture": {
+        "value": "x64",
+        "strategy": "set"
+      }
+    },
+    {
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX /external:W0"
+      },
+      "generator": "Visual Studio 18 2026",
+      "inherits": [
+        "cmake-dev",
+        "vcpkg",
+        "windows"
+      ],
+      "name": "vs2026-windows-vcpkg",
+      "toolset": "v145",
+      "architecture": {
+        "value": "x64",
+        "strategy": "set"
+      }
     }
   ],
   "version": 2
