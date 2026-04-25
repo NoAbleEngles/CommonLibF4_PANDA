@@ -5,6 +5,7 @@
   "homepage": "https://github.com/Ryan-rsm-McKenzie/CommonLibF4",
   "license": "MIT",
   "supports": "windows & x64",
+  "builtin-baseline": "e5a1490e1409d175932ef6014519e9ae149ddb7c",
   "dependencies": [
     "boost-stl-interfaces",
     "fmt",

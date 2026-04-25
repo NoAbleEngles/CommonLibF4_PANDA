@@ -75,8 +75,8 @@ namespace RE
 
 				virtual ~Entry() {};							  // 00
 				virtual float GetDefaultValue() { return 0.0F; }  // 01
-				virtual void InitItem(TESForm* a_owner) {};       // 02
-				virtual void CopyData(Entry* a_copy) {};          // 03
+				virtual void InitItem([[maybe_unused]] TESForm* a_owner) {};       // 02
+				virtual void CopyData([[maybe_unused]] Entry* a_copy) {};          // 03
 				virtual void LoadImpl(TESFile* a_file) = 0;       // 04
 
 				BGSLocalizedString name;                         // 08
@@ -132,9 +132,9 @@ namespace RE
 			public:
 				virtual ~Mask() {};                               // 00
 				virtual float GetDefaultValue() { return 0.0F; }  // 01
-				virtual void InitItem(TESForm* a_owner) {};       // 02
-				virtual void CopyData(Entry* a_copy) {};          // 03
-				virtual void LoadImpl(TESFile* a_file) {};        // 04
+				virtual void InitItem([[maybe_unused]] TESForm* a_owner) {};       // 02
+				virtual void CopyData([[maybe_unused]] Entry* a_copy) {};          // 03
+				virtual void LoadImpl([[maybe_unused]] TESFile* a_file) {};        // 04
 
 				BSFixedString texture;  // 20
 				BlendingOp blendOp;     // 28
@@ -151,9 +151,9 @@ namespace RE
 			public:
 				virtual ~Palette() {};                            // 00
 				virtual float GetDefaultValue() { return 0.0F; }  // 01
-				virtual void InitItem(TESForm* a_owner) {};       // 02
-				virtual void CopyData(Entry* a_copy) {};          // 03
-				virtual void LoadImpl(TESFile* a_file) {};        // 04
+				virtual void InitItem([[maybe_unused]] TESForm* a_owner) {};       // 02
+				virtual void CopyData([[maybe_unused]] Entry* a_copy) {};          // 03
+				virtual void LoadImpl([[maybe_unused]] TESFile* a_file) {};        // 04
 
 				struct ColorData
 				{
@@ -191,9 +191,9 @@ namespace RE
 			public:
 				virtual ~TextureSet() {};						  // 00
 				virtual float GetDefaultValue() { return 0.0F; }  // 01
-				virtual void InitItem(TESForm* a_owner) {};       // 02
-				virtual void CopyData(Entry* a_copy) {};          // 03
-				virtual void LoadImpl(TESFile* a_file) {};        // 04
+				virtual void InitItem([[maybe_unused]] TESForm* a_owner) {};       // 02
+				virtual void CopyData([[maybe_unused]] Entry* a_copy) {};          // 03
+				virtual void LoadImpl([[maybe_unused]] TESFile* a_file) {};        // 04
 
 				BSFixedString diffuse;   // 20
 				BSFixedString normal;    // 28
@@ -212,10 +212,10 @@ namespace RE
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Entry };
 		public:
 			virtual ~Entry() {};                                                            // 00
-			virtual bool GetIsIdentical(Entry* rhs) { return false; };                     // 01 
-			virtual void CopyData(Entry* rhs) {};                                          // 02
-			virtual void SetFromTemplateDefault(Template::Entry* tmpl) {};                 // 03
-			virtual bool GetMatchesTemplateDefault(Template::Entry* tmpl) { return false; }; // 04
+			virtual bool GetIsIdentical([[maybe_unused]] Entry* rhs) { return false; };                     // 01 
+			virtual void CopyData([[maybe_unused]] Entry* rhs) {};                                          // 02
+			virtual void SetFromTemplateDefault([[maybe_unused]] Template::Entry* tmpl) {};                 // 03
+			virtual bool GetMatchesTemplateDefault([[maybe_unused]] Template::Entry* tmpl) { return false; }; // 04
 			virtual uint32_t GetType(void) = 0;                                            // 05
 			virtual void Unk_06(void) {};                                                  // 06
 
@@ -254,8 +254,8 @@ namespace RE
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__MaskEntry };
 		public:
 			virtual ~MaskEntry() {};
-			virtual void SetFromTemplateDefault(Template::Entry* tmpl) override {};     // 03
-			virtual bool GetMatchesTemplateDefault(Template::Entry* tmpl) override { return false; }; // 04
+			virtual void SetFromTemplateDefault([[maybe_unused]] Template::Entry* tmpl) override {};     // 03
+			virtual bool GetMatchesTemplateDefault([[maybe_unused]] Template::Entry* tmpl) override { return false; }; // 04
 			virtual uint32_t GetType(void) override { return kTypeMask; };  // 05
 			virtual void Unk_06(void) override {};                          // 06
 		};
@@ -268,10 +268,10 @@ namespace RE
 		public:
 			virtual ~PaletteEntry() {};
 
-			virtual bool GetIsIdentical(Entry* rhs) { return false; };                                 // 01
-			virtual void CopyData(Entry* rhs) {};                                                      // 02
-			virtual void SetFromTemplateDefault(Template::Entry* tmpl) override {};                    // 03
-			virtual bool GetMatchesTemplateDefault(Template::Entry* tmpl) override { return false; };  // 04
+			virtual bool GetIsIdentical([[maybe_unused]] Entry* rhs) { return false; };                                 // 01
+			virtual void CopyData([[maybe_unused]] Entry* rhs) {};                                                      // 02
+			virtual void SetFromTemplateDefault([[maybe_unused]] Template::Entry* tmpl) override {};                    // 03
+			virtual bool GetMatchesTemplateDefault([[maybe_unused]] Template::Entry* tmpl) override { return false; };  // 04
 			virtual uint32_t GetType(void) override { return kTypePalette; };                          // 05
 			virtual void Unk_06(void) override {};       // 06
 
@@ -298,8 +298,8 @@ namespace RE
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__TextureSetEntry };
 		public:
 			virtual ~TextureSetEntry() {};																// 00
-			virtual void SetFromTemplateDefault(Template::Entry* tmpl) override {};						// 03
-			virtual bool GetMatchesTemplateDefault(Template::Entry* tmpl) override { return false; };	// 04
+			virtual void SetFromTemplateDefault([[maybe_unused]] Template::Entry* tmpl) override {};						// 03
+			virtual bool GetMatchesTemplateDefault([[maybe_unused]] Template::Entry* tmpl) override { return false; };	// 04
 			virtual uint32_t GetType(void) override { return kTypeTexture; };							// 05
 			virtual void Unk_06(void) override {};														// 06
 		};

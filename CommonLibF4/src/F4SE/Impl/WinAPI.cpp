@@ -1,4 +1,4 @@
-#include "C:/cpp/CommonLibF4/build/CommonLibF4/CMakeFiles/CommonLibF4.dir/Release/cmake_pch.hxx"
+﻿#include "F4SE/Impl/PCH.h"
 #include "F4SE/Impl/WinAPI.h"
 
 #define WIN32_LEAN_AND_MEAN
@@ -322,3 +322,4 @@ namespace F4SE::WinAPI
 				reinterpret_cast<::PDWORD>(a_oldProtect)));
 	}
 }
+

@@ -1,0 +1,33 @@
+{
+  "configurations": [
+    {
+      "name": "vs2026-windows-vcpkg",
+      "generator": "Visual Studio 18 2026",
+      "configurationType": "Debug",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "buildRoot": "${projectDir}\\build",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "cmakeToolchain": "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "variables": [
+        {
+          "name": "VCPKG_TARGET_TRIPLET",
+          "value": "x64-windows-static-md",
+          "type": "STRING"
+        },
+        {
+          "name": "VCPKG_HOST_TRIPLET",
+          "value": "x64-windows-static-md",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_TOOLCHAIN_FILE",
+          "value": "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/scripts/buildsystems/vcpkg.cmake",
+          "type": "STRING"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-#include "C:/cpp/CommonLibF4/build/CommonLibF4/CMakeFiles/CommonLibF4.dir/Release/cmake_pch.hxx"
+﻿#include "F4SE/Impl/PCH.h"
 #include "RE/Scaleform/GFx/GFx_Player.h"
 
 #include "RE/Scaleform/GFx/GFx_ASMovieRootBase.h"
@@ -25,3 +25,4 @@ namespace RE::Scaleform::GFx
 		return asMovieRoot->GetVariable(a_val, a_pathToVar);
 	}
 }
+

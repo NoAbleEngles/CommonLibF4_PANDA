@@ -1,4 +1,4 @@
-#include "C:/cpp/CommonLibF4/build/CommonLibF4/CMakeFiles/CommonLibF4.dir/Release/cmake_pch.hxx"
+﻿#include "F4SE/Impl/PCH.h"
 #include "RE/Bethesda/TESObjectREFRs.h"
 
 #include "RE/NetImmerse/NiAVObject.h"
@@ -68,3 +68,4 @@ namespace RE
 				   static_cast<std::underlying_type_t<RESET_3D_FLAGS>>(flag)) != 0;
 	}
 }
+

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "default",
+      "inherits": "vs2026-windows-vcpkg",
+      "environment": {
+        "VCPKG_DEFAULT_TRIPLET": "x64-windows-static-md",
+        "VCPKG_DEFAULT_HOST_TRIPLET": "x64-windows-static-md"
+      }
+    }
+  ]
+}
