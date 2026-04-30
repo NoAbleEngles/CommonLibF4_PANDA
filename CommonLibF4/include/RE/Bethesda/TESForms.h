@@ -659,18 +659,56 @@ namespace RE
 	//};
 
 	public:
-		static constexpr auto RTTI{ RTTI::TESForm };
-		static constexpr auto VTABLE{ VTABLE::TESForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESForm, RTTI_AE::TESForm) };
+		static constexpr auto VTABLE{ VTABLE::TESForm };  // Same in AE and OG
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kNONE };
 
 		struct FormSortFunc
 		{
 		public:
-			std::int32_t operator()(const TESForm* a_arg1, const TESForm* a_arg2)
+			std::int32_t operator()(const TESForm* a_arg1, const TESForm* a_arg2) const
 			{
-				using func_t = decltype(&FormSortFunc::operator());
-				REL::Relocation<func_t> func{ REL::ID(705530) };
-				return func(this, a_arg1, a_arg2);
+				if constexpr (REL::GAME_VERSION == REL::GameVersion::AE) {  // AE has an inline implementation of this function, but we need it to be inline in OG as well for the sort function in BGSDefaultObjectManager
+					// Inline implementation for AE (function is inlined or not found)
+					if (!a_arg1) {
+						return a_arg2 ? -1 : 0;
+					}
+					if (!a_arg2) {
+						return 1;
+					}
+
+					// Compare by form type code
+					const auto formEnumStrings = GetFormEnumString();
+					const auto formCode1 = formEnumStrings[stl::to_underlying(a_arg1->GetFormType())].formCode;
+					const auto formCode2 = formEnumStrings[stl::to_underlying(a_arg2->GetFormType())].formCode;
+
+					if (formCode1 != formCode2) {
+						return formCode1 < formCode2 ? -1 : 1;
+					}
+
+					// Compare by editor ID
+					const char* editorID1 = a_arg1->GetFormEditorID();
+					const char* editorID2 = a_arg2->GetFormEditorID();
+					const int cmpResult = _stricmp(editorID1, editorID2);
+
+					if (cmpResult != 0) {
+						return cmpResult < 0 ? -1 : 1;
+					}
+
+					// Compare by form ID
+					const auto formID1 = a_arg1->GetFormID();
+					const auto formID2 = a_arg2->GetFormID();
+
+					if (formID1 == formID2) {
+						return 0;
+					}
+
+					return formID1 < formID2 ? -1 : 1;
+				} else {
+					using func_t = decltype(&FormSortFunc::operator());
+					REL::Relocation<func_t> func{ REL::ID(705530) };
+					return func(this, a_arg1, a_arg2);
+				}
 			}
 		};
 		static_assert(std::is_empty_v<FormSortFunc>);
@@ -752,7 +790,7 @@ namespace RE
 		static void AddCompileIndex(std::uint32_t& a_id, TESFile* a_file)
 		{
 			using func_t = decltype(&TESForm::AddCompileIndex);
-			REL::Relocation<func_t> func{ REL::ID(1315637) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1315637, 2193152) };
 			return func(a_id, a_file);
 		}
 
@@ -761,8 +799,8 @@ namespace RE
 				BSTHashMap<std::uint32_t, TESForm*>*,
 				std::reference_wrapper<BSReadWriteLock>>
 		{
-			REL::Relocation<BSTHashMap<std::uint32_t, TESForm*>**> allForms{ REL::ID(422985) };
-			REL::Relocation<BSReadWriteLock*> allFormsMapLock{ REL::ID(691815) };
+			REL::Relocation<BSTHashMap<std::uint32_t, TESForm*>**> allForms{ REL::SelectVersionID(422985, 4796465) };
+			REL::Relocation<BSReadWriteLock*> allFormsMapLock{ REL::SelectVersionID(691815, 4796476) };
 			return { *allForms, *allFormsMapLock };
 		}
 
@@ -771,8 +809,8 @@ namespace RE
 				BSTHashMap<BSFixedString, TESForm*>*,
 				std::reference_wrapper<BSReadWriteLock>>
 		{
-			REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::ID(642758) };
-			REL::Relocation<BSReadWriteLock*> allFormsEditorIDMapLock{ REL::ID(910917) };
+			REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::SelectVersionID(642758, 4796466) };
+			REL::Relocation<BSReadWriteLock*> allFormsEditorIDMapLock{ REL::SelectVersionID(910917, 4796477) };
 			return { *allFormsByEditorID, *allFormsEditorIDMapLock };
 		}
 
@@ -784,7 +822,7 @@ namespace RE
 		[[nodiscard]] TESFile* GetFile(std::int32_t a_index = -1) const
 		{
 			using func_t = decltype(&TESForm::GetFile);
-			REL::Relocation<func_t> func{ REL::ID(1376557) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1376557, 2193103) };
 			return func(this, a_index);
 		}
 
@@ -828,14 +866,14 @@ namespace RE
 
 		[[nodiscard]] static std::span<FORM_ENUM_STRING, 159> GetFormEnumString()
 		{
-			REL::Relocation<FORM_ENUM_STRING(*)[159]> functions{ REL::ID(1309967) };
+			REL::Relocation<FORM_ENUM_STRING(*)[159]> functions{ REL::SelectVersionID(1309967, 1309967) };
 			return { *functions };
 		}
 
 		[[nodiscard]] static ENUM_FORM_ID GetFormTypeFromString(const char* a_formTypeString)
 		{
 			using func_t = decltype(&TESForm::GetFormTypeFromString);
-			REL::Relocation<func_t> func{ REL::ID(565203) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(565203, 2193108) };
 			return func(a_formTypeString);
 		}
 
@@ -876,7 +914,7 @@ namespace RE
 		void SetTemporary()
 		{
 			using func_t = decltype(&TESForm::SetTemporary);
-			REL::Relocation<func_t> func{ REL::ID(482454) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(482454, 2193125) };
 			return func(this);
 		}
 
@@ -915,7 +953,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSKeyword };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSKeyword, RTTI_AE::BGSKeyword) };
 		static constexpr auto VTABLE{ VTABLE::BGSKeyword };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kKYWD };
 
@@ -936,7 +974,7 @@ namespace RE
 		[[nodiscard]] static auto GetTypedKeywords()
 			-> std::optional<std::span<BSTArray<BGSKeyword*>, stl::to_underlying(KeywordType::kTotal)>>
 		{
-			REL::Relocation<BSTArray<BGSKeyword*>(*)[stl::to_underlying(KeywordType::kTotal)]> keywords{ REL::ID(1095775) };
+			REL::Relocation<BSTArray<BGSKeyword*>(*)[stl::to_underlying(KeywordType::kTotal)]> keywords{ REL::SelectVersionID(1095775, 4799330) };
 			if (*keywords) {
 				return { *keywords };
 			} else {
@@ -953,7 +991,7 @@ namespace RE
 		public BGSKeyword  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSLocationRefType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSLocationRefType, RTTI_AE::BGSLocationRefType) };
 		static constexpr auto VTABLE{ VTABLE::BGSLocationRefType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLCRT };
 	};
@@ -963,7 +1001,7 @@ namespace RE
 		public BGSKeyword  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSAction };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSAction, RTTI_AE::BGSAction) };
 		static constexpr auto VTABLE{ VTABLE::BGSAction };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kAACT };
 
@@ -976,7 +1014,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSTransform };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSTransform, RTTI_AE::BGSTransform) };
 		static constexpr auto VTABLE{ VTABLE::BGSTransform };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kTRNS };
 
@@ -1002,7 +1040,7 @@ namespace RE
 		public TESIcon   // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSMenuIcon };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMenuIcon, RTTI_AE::BGSMenuIcon) };
 		static constexpr auto VTABLE{ VTABLE::BGSMenuIcon };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMICN };
 	};
@@ -1012,7 +1050,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESGlobal };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESGlobal, RTTI_AE::TESGlobal) };
 		static constexpr auto VTABLE{ VTABLE::TESGlobal };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kGLOB };
 
@@ -1028,7 +1066,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSDamageType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSDamageType, RTTI_AE::BGSDamageType) };
 		static constexpr auto VTABLE{ VTABLE::BGSDamageType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDMGT };
 
@@ -1063,7 +1101,7 @@ namespace RE
 		public BGSPropertySheet  // 58
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESClass };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESClass, RTTI_AE::TESClass) };
 		static constexpr auto VTABLE{ VTABLE::TESClass };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCLAS };
 
@@ -1078,7 +1116,7 @@ namespace RE
 		public TESTexture    // 30
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESEyes };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESEyes, RTTI_AE::TESEyes) };
 		static constexpr auto VTABLE{ VTABLE::TESEyes };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kEYES };
 
@@ -1094,7 +1132,7 @@ namespace RE
 		public BGSKeywordForm         // 040
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::EffectSetting };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::EffectSetting, RTTI_AE::EffectSetting) };
 		static constexpr auto VTABLE{ VTABLE::EffectSetting };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMGEF };
 
@@ -1203,7 +1241,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESLandTexture };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESLandTexture, RTTI_AE::TESLandTexture) };
 		static constexpr auto VTABLE{ VTABLE::TESLandTexture };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLTEX };
 
@@ -1221,7 +1259,7 @@ namespace RE
 		public TESForm  // 000
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESWeather };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESWeather, RTTI_AE::TESWeather) };
 		static constexpr auto VTABLE{ VTABLE::TESWeather };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWTHR };
 
@@ -1313,7 +1351,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESClimate };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESClimate, RTTI_AE::TESClimate) };
 		static constexpr auto VTABLE{ VTABLE::TESClimate };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCLMT };
 
@@ -1329,7 +1367,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSShaderParticleGeometryData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSShaderParticleGeometryData, RTTI_AE::BGSShaderParticleGeometryData) };
 		static constexpr auto VTABLE{ VTABLE::BGSShaderParticleGeometryData };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSPGD };
 
@@ -1344,7 +1382,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSReferenceEffect };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSReferenceEffect, RTTI_AE::BGSReferenceEffect) };
 		static constexpr auto VTABLE{ VTABLE::BGSReferenceEffect };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kRFCT };
 
@@ -1367,7 +1405,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESRegion };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESRegion, RTTI_AE::TESRegion) };
 		static constexpr auto VTABLE{ VTABLE::TESRegion };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kREGN };
 
@@ -1441,7 +1479,7 @@ namespace RE
 		public TESFullName  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESObjectCELL };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESObjectCELL, RTTI_AE::TESObjectCELL) };
 		static constexpr auto VTABLE{ VTABLE::TESObjectCELL };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCELL };
 
@@ -1468,49 +1506,49 @@ namespace RE
 		[[nodiscard]] bool GetCantWaitHere()
 		{
 			using func_t = decltype(&TESObjectCELL::GetCantWaitHere);
-			REL::Relocation<func_t> func{ REL::ID(376940) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(376940, 2200287) };
 			return func(this);
 		}
 
 		[[nodiscard]] std::int32_t GetDataX()
 		{
 			using func_t = decltype(&TESObjectCELL::GetDataX);
-			REL::Relocation<func_t> func{ REL::ID(445210) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(445210, 2200213) };
 			return func(this);
 		}
 
 		[[nodiscard]] std::int32_t GetDataY()
 		{
 			using func_t = decltype(&TESObjectCELL::GetDataY);
-			REL::Relocation<func_t> func{ REL::ID(1322816) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1322816, 2200214) };
 			return func(this);
 		}
 
 		[[nodiscard]] BGSEncounterZone* GetEncounterZone() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetEncounterZone);
-			REL::Relocation<func_t> func{ REL::ID(1414637) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1414637, 2200242) };
 			return func(this);
 		}
 
 		[[nodiscard]] BGSLocation* GetLocation() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetLocation);
-			REL::Relocation<func_t> func{ REL::ID(868663) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(868663, 2200179) };
 			return func(this);
 		}
 
 		[[nodiscard]] TESForm* GetOwner()
 		{
 			using func_t = decltype(&TESObjectCELL::GetOwner);
-			REL::Relocation<func_t> func{ REL::ID(910422) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(910422, 2200236) };
 			return func(this);
 		}
 
 		[[nodiscard]] TESWorldSpace* GetWorldSpace()
 		{
 			using func_t = decltype(&TESObjectCELL::GetWorldSpace);
-			REL::Relocation<func_t> func{ REL::ID(968674) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(968674, 2199522) };
 			return func(this);
 		}
 
@@ -1518,7 +1556,7 @@ namespace RE
 		bool IsCellLoaded() const
 		{
 			using func_t = decltype(&TESObjectCELL::IsCellLoaded);
-			REL::Relocation<func_t> func{ REL::Offset(0x3F4D40) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(189642, 2200810) };
 			return func(this);
 		}
 
@@ -1590,7 +1628,7 @@ namespace RE
 		public TESChildCell  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESObjectLAND };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESObjectLAND, RTTI_AE::TESObjectLAND) };
 		static constexpr auto VTABLE{ VTABLE::TESObjectLAND };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLAND };
 
@@ -1619,7 +1657,7 @@ namespace RE
 		public TESFullName  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESTopic };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESTopic, RTTI_AE::TESTopic) };
 		static constexpr auto VTABLE{ VTABLE::TESTopic };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDIAL };
 
@@ -1661,7 +1699,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESTopicInfo };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESTopicInfo, RTTI_AE::TESTopicInfo) };
 		static constexpr auto VTABLE{ VTABLE::TESTopicInfo };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kINFO };
 
@@ -1693,7 +1731,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESIdleForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESIdleForm, RTTI_AE::TESIdleForm) };
 		static constexpr auto VTABLE{ VTABLE::TESIdleForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIDLE };
 
@@ -1714,7 +1752,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESLoadScreen };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESLoadScreen, RTTI_AE::TESLoadScreen) };
 		static constexpr auto VTABLE{ VTABLE::TESLoadScreen };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLSCR };
 
@@ -1732,7 +1770,7 @@ namespace RE
 		public BGSModelMaterialSwap  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESObjectANIO };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESObjectANIO, RTTI_AE::TESObjectANIO) };
 		static constexpr auto VTABLE{ VTABLE::TESObjectANIO };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kANIO };
 
@@ -1792,7 +1830,7 @@ namespace RE
 		public TESModel  // 020
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESEffectShader };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESEffectShader, RTTI_AE::TESEffectShader) };
 		static constexpr auto VTABLE{ VTABLE::TESEffectShader };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kEFSH };
 
@@ -1813,7 +1851,7 @@ namespace RE
 		public BGSPreloadable  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSDebris };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSDebris, RTTI_AE::BGSDebris) };
 		static constexpr auto VTABLE{ VTABLE::BGSDebris };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDEBR };
 
@@ -1837,7 +1875,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESImageSpace };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESImageSpace, RTTI_AE::TESImageSpace) };
 		static constexpr auto VTABLE{ VTABLE::TESImageSpace };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIMGS };
 
@@ -1852,7 +1890,7 @@ namespace RE
 		public TESForm  // 000
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESImageSpaceModifier };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESImageSpaceModifier, RTTI_AE::TESImageSpaceModifier) };
 		static constexpr auto VTABLE{ VTABLE::TESImageSpaceModifier };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIMAD };
 
@@ -1911,7 +1949,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSListForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSListForm, RTTI_AE::BGSListForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSListForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kFLST };
 
@@ -1972,7 +2010,7 @@ namespace RE
 		public TESIcon          // 48
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSPerk };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSPerk, RTTI_AE::BGSPerk) };
 		static constexpr auto VTABLE{ VTABLE::BGSPerk };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPERK };
 
@@ -1992,7 +2030,7 @@ namespace RE
 		public BGSPreloadable  // 050
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSBodyPartData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSBodyPartData, RTTI_AE::BGSBodyPartData) };
 		static constexpr auto VTABLE{ VTABLE::BGSBodyPartData };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kBPTD };
 
@@ -2008,7 +2046,7 @@ namespace RE
 		public TESImageSpaceModifiableForm  // 50
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSCameraShot };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCameraShot, RTTI_AE::BGSCameraShot) };
 		static constexpr auto VTABLE{ VTABLE::BGSCameraShot };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCAMS };
 
@@ -2056,7 +2094,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSCameraPath };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCameraPath, RTTI_AE::BGSCameraPath) };
 		static constexpr auto VTABLE{ VTABLE::BGSCameraPath };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCPTH };
 
@@ -2082,7 +2120,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSVoiceType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSVoiceType, RTTI_AE::BGSVoiceType) };
 		static constexpr auto VTABLE{ VTABLE::BGSVoiceType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kVTYP };
 
@@ -2096,7 +2134,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSMaterialType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMaterialType, RTTI_AE::BGSMaterialType) };
 		static constexpr auto VTABLE{ VTABLE::BGSMaterialType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMATT };
 
@@ -2142,7 +2180,7 @@ namespace RE
 		public TESModel  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSImpactData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSImpactData, RTTI_AE::BGSImpactData) };
 		static constexpr auto VTABLE{ VTABLE::BGSImpactData };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIPCT };
 
@@ -2180,7 +2218,7 @@ namespace RE
 		public BGSPreloadable  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSImpactDataSet };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSImpactDataSet, RTTI_AE::BGSImpactDataSet) };
 		static constexpr auto VTABLE{ VTABLE::BGSImpactDataSet };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIPDS };
 
@@ -2225,7 +2263,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSEncounterZone };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSEncounterZone, RTTI_AE::BGSEncounterZone) };
 		static constexpr auto VTABLE{ VTABLE::BGSEncounterZone };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kECZN };
 
@@ -2279,7 +2317,7 @@ namespace RE
 		public BGSKeywordForm  // 030
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSLocation };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSLocation, RTTI_AE::BGSLocation) };
 		static constexpr auto VTABLE{ VTABLE::BGSLocation };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLCTN };
 
@@ -2334,14 +2372,14 @@ namespace RE
 		public TESDescription  // 30
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSMessage };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMessage, RTTI_AE::BGSMessage) };
 		static constexpr auto VTABLE{ VTABLE::BGSMessage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMESG };
 
 		std::uint32_t GetConvertedDescription(BSFixedString& a_result)
 		{
 			using func_t = decltype(&BGSMessage::GetConvertedDescription);
-			REL::Relocation<func_t> func{ REL::ID(8331) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(8331, 2203353) };
 			return func(this, a_result);
 		}
 
@@ -2360,7 +2398,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSLightingTemplate };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSLightingTemplate, RTTI_AE::BGSLightingTemplate) };
 		static constexpr auto VTABLE{ VTABLE::BGSLightingTemplate };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLGTM };
 
@@ -2376,7 +2414,7 @@ namespace RE
 		public BSIMusicType  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSMusicType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMusicType, RTTI_AE::BGSMusicType) };
 		static constexpr auto VTABLE{ VTABLE::BGSMusicType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMUSC };
 
@@ -2389,7 +2427,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSFootstep };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSFootstep, RTTI_AE::BGSFootstep) };
 		static constexpr auto VTABLE{ VTABLE::BGSFootstep };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kFSTP };
 
@@ -2403,7 +2441,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSFootstepSet };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSFootstepSet, RTTI_AE::BGSFootstepSet) };
 		static constexpr auto VTABLE{ VTABLE::BGSFootstepSet };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kFSTS };
 
@@ -2416,7 +2454,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSDialogueBranch };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSDialogueBranch, RTTI_AE::BGSDialogueBranch) };
 		static constexpr auto VTABLE{ VTABLE::BGSDialogueBranch };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDLBR };
 
@@ -2433,7 +2471,7 @@ namespace RE
 		public BSIMusicTrack  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSMusicTrackFormWrapper };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMusicTrackFormWrapper, RTTI_AE::BGSMusicTrackFormWrapper) };
 		static constexpr auto VTABLE{ VTABLE::BGSMusicTrackFormWrapper };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMUST };
 
@@ -2447,7 +2485,7 @@ namespace RE
 		public TESFullName  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESWordOfPower };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESWordOfPower, RTTI_AE::TESWordOfPower) };
 		static constexpr auto VTABLE{ VTABLE::TESWordOfPower };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWOOP };
 
@@ -2464,7 +2502,7 @@ namespace RE
 		public TESDescription         // 50
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESShout };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESShout, RTTI_AE::TESShout) };
 		static constexpr auto VTABLE{ VTABLE::TESShout };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSHOU };
 
@@ -2487,7 +2525,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSEquipSlot };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSEquipSlot, RTTI_AE::BGSEquipSlot) };
 		static constexpr auto VTABLE{ VTABLE::BGSEquipSlot };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kEQUP };
 
@@ -2502,7 +2540,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSRelationship };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSRelationship, RTTI_AE::BGSRelationship) };
 		static constexpr auto VTABLE{ VTABLE::BGSRelationship };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kRELA };
 
@@ -2532,7 +2570,7 @@ namespace RE
 		public IKeywordFormBase  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSScene };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSScene, RTTI_AE::BGSScene) };
 		static constexpr auto VTABLE{ VTABLE::BGSScene };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSCEN };
 
@@ -2561,7 +2599,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSAssociationType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSAssociationType, RTTI_AE::BGSAssociationType) };
 		static constexpr auto VTABLE{ VTABLE::BGSAssociationType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kASTP };
 
@@ -2575,7 +2613,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSOutfit };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSOutfit, RTTI_AE::BGSOutfit) };
 		static constexpr auto VTABLE{ VTABLE::BGSOutfit };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kOTFT };
 
@@ -2590,7 +2628,7 @@ namespace RE
 		public BSMaterialObject  // 50
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSMaterialObject };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMaterialObject, RTTI_AE::BGSMaterialObject) };
 		static constexpr auto VTABLE{ VTABLE::BGSMaterialObject };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMATO };
 
@@ -2612,7 +2650,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSMovementType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMovementType, RTTI_AE::BGSMovementType) };
 		static constexpr auto VTABLE{ VTABLE::BGSMovementType };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMOVT };
 
@@ -2626,7 +2664,7 @@ namespace RE
 		public BSISoundDescriptor  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSSoundDescriptorForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSSoundDescriptorForm, RTTI_AE::BGSSoundDescriptorForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSSoundDescriptorForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSNDR };
 
@@ -2641,7 +2679,7 @@ namespace RE
 		public BSISoundCategory  // 30
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSSoundCategory };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSSoundCategory, RTTI_AE::BGSSoundCategory) };
 		static constexpr auto VTABLE{ VTABLE::BGSSoundCategory };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSNCT };
 

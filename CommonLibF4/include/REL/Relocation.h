@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "F4SE/Impl/PCH.h"
 #include <cstdint>
 #define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
