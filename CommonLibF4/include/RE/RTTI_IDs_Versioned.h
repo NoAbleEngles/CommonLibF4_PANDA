@@ -5,21 +5,20 @@
 
 namespace RE
 {
-    namespace RTTI
-    {
-        // Version-aware RTTI IDs
-        // Usage: inline constexpr auto IMemoryStoreBase = REL_ID_VER(vr_id, ae_id);
+	namespace RTTI
+	{
+		// Version-aware RTTI IDs
+		// Usage: inline constexpr auto IMemoryStoreBase = REL_ID_VER(og_id, ae_id);
+		// First parameter: OG (Original/Pre-AE) ID
+		// Second parameter: AE (Anniversary Edition/Next-Gen) ID
 
-        // Example entries - you'll need to fill in actual IDs
-        inline constexpr auto IMemoryStoreBase = REL_ID_VER(0, 0);  // Replace with actual IDs
-        inline constexpr auto IMemoryStore = REL_ID_VER(0, 0);
-        inline constexpr auto IMemoryHeap = REL_ID_VER(0, 0);
-        inline constexpr auto ScrapHeap = REL_ID_VER(0, 0);
+		// Memory Management
+		inline constexpr auto IMemoryStoreBase = REL_ID_VER(0, 4858639);  // OG ID needed
+		inline constexpr auto IMemoryStore = REL_ID_VER(0, 4858637);      // OG ID needed
+		inline constexpr auto IMemoryHeap = REL_ID_VER(0, 4858649);       // OG ID needed
+		inline constexpr auto ScrapHeap = REL_ID_VER(0, 4858641);         // OG ID needed
 
-        // Keep existing non-versioned IDs for compatibility
-        // These can be gradually migrated to version-aware format
-        inline constexpr REL::ID AIProcess__PendingActorHeadData{ 892595 };
-        inline constexpr REL::ID AStarSearchBase{ 640682 };
-        // ... rest of existing IDs
-    }
+		// Add more version-aware RTTI IDs here
+		// Format: inline constexpr auto ClassName = REL_ID_VER(og_id, ae_id);
+	}
 }

@@ -1,5 +1,11 @@
 #pragma once
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	namespace CompactingStore
@@ -17,8 +23,8 @@ namespace RE
 	class __declspec(novtable) IMemoryStoreBase
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::IMemoryStoreBase };
-		static constexpr auto VTABLE{ VTABLE::IMemoryStoreBase };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::IMemoryStoreBase, RTTI_AE::IMemoryStoreBase) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::IMemoryStoreBase, VTABLE_AE::IMemoryStoreBase) };
 
 		virtual ~IMemoryStoreBase() = default;  // 00
 
@@ -33,8 +39,8 @@ namespace RE
 		public IMemoryStoreBase  // 0
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::IMemoryStore };
-		static constexpr auto VTABLE{ VTABLE::IMemoryStore };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::IMemoryStore, RTTI_AE::IMemoryStore) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::IMemoryStore, VTABLE_AE::IMemoryStore) };
 
 		// NOLINTNEXTLINE(modernize-use-override)
 		virtual ~IMemoryStore() = default;  // 00
@@ -50,8 +56,8 @@ namespace RE
 		public IMemoryStore  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::IMemoryHeap };
-		static constexpr auto VTABLE{ VTABLE::IMemoryHeap };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::IMemoryHeap, RTTI_AE::IMemoryHeap) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::IMemoryHeap, VTABLE_AE::IMemoryHeap) };
 
 		// NOLINTNEXTLINE(modernize-use-override)
 		virtual ~IMemoryHeap() = default;
@@ -77,8 +83,8 @@ namespace RE
 		public IMemoryStore  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ScrapHeap };
-		static constexpr auto VTABLE{ VTABLE::ScrapHeap };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ScrapHeap, RTTI_AE::ScrapHeap) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::ScrapHeap, VTABLE_AE::ScrapHeap) };
 
 		struct Block
 		{
@@ -124,7 +130,7 @@ namespace RE
 		void* Allocate(std::size_t a_size, std::size_t a_alignment)
 		{
 			using func_t = decltype(&ScrapHeap::Allocate);
-			REL::Relocation<func_t> func{ REL::ID(1085394) };
+			REL::Relocation<func_t> func{ REL::ID(static_cast<std::uint64_t>(REL_ID_VER(1085394, 2267983))) };  // OG: 1085394, AE: 2267983
 			return func(this, a_size, a_alignment);
 		}
 
@@ -171,14 +177,14 @@ namespace RE
 			AutoScrapBuffer* Ctor()
 			{
 				using func_t = decltype(&AutoScrapBuffer::Ctor);
-				REL::Relocation<func_t> func{ REL::ID(1571567) };
+				REL::Relocation<func_t> func{ REL::SelectVersionID(1571567, 2267865) };
 				return func(this);
 			}
 
 			void Dtor()
 			{
 				using func_t = decltype(&AutoScrapBuffer::Dtor);
-				REL::Relocation<func_t> func{ REL::ID(68625) };
+				REL::Relocation<func_t> func{ REL::SelectVersionID(68625, 2267867) };
 				return func(this);
 			}
 		};
@@ -197,42 +203,42 @@ namespace RE
 		[[nodiscard]] static MemoryManager& GetSingleton()
 		{
 			using func_t = decltype(&MemoryManager::GetSingleton);
-			const REL::Relocation<func_t> func{ REL::ID(343176) };
+			const REL::Relocation<func_t> func{ REL::SelectVersionID(343176, 4471522) };
 			return func();
 		}
 
 		[[nodiscard]] void* Allocate(std::size_t a_size, std::uint32_t a_alignment, bool a_alignmentRequired)
 		{
 			using func_t = decltype(&MemoryManager::Allocate);
-			const REL::Relocation<func_t> func{ REL::ID(652767) };
+			const REL::Relocation<func_t> func{ REL::SelectVersionID(652767, 2267872) };
 			return func(this, a_size, a_alignment, a_alignmentRequired);
 		}
 
 		void Deallocate(void* a_mem, bool a_alignmentRequired)
 		{
 			using func_t = decltype(&MemoryManager::Deallocate);
-			const REL::Relocation<func_t> func{ REL::ID(1582181) };
+			const REL::Relocation<func_t> func{ REL::SelectVersionID(1582181, 2267874) };
 			return func(this, a_mem, a_alignmentRequired);
 		}
 
 		[[nodiscard]] ScrapHeap* GetThreadScrapHeap()
 		{
 			using func_t = decltype(&MemoryManager::GetThreadScrapHeap);
-			const REL::Relocation<func_t> func{ REL::ID(1495205) };
+			const REL::Relocation<func_t> func{ REL::SelectVersionID(1495205, 2267850) };
 			return func(this);
 		}
 
 		[[nodiscard]] void* Reallocate(void* a_oldMem, std::size_t a_newSize, std::uint32_t a_alignment, bool a_alignmentRequired)
 		{
 			using func_t = decltype(&MemoryManager::Reallocate);
-			const REL::Relocation<func_t> func{ REL::ID(1502917) };
+			const REL::Relocation<func_t> func{ REL::SelectVersionID(1502917, 2267873) };
 			return func(this, a_oldMem, a_newSize, a_alignment, a_alignmentRequired);
 		}
 
 		void RegisterMemoryManager()
 		{
 			using func_t = decltype(&MemoryManager::RegisterMemoryManager);
-			const REL::Relocation<func_t> func{ REL::ID(453212) };
+			const REL::Relocation<func_t> func{ REL::SelectVersionID(453212, 2228356) };
 			return func(this);
 		}
 

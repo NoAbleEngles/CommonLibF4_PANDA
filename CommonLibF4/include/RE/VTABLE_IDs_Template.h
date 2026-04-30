@@ -10,13 +10,13 @@
 // This file contains VTABLE IDs that differ between Fallout 4 versions.
 // 
 // HOW TO USE:
-// 1. Find the VTABLE ID in both VR and AE versions
-// 2. Add entry: inline constexpr auto ClassName = REL_ID_VER(vr_id, ae_id);
+// 1. Find the VTABLE ID in both OG and AE versions
+// 2. Add entry: inline constexpr auto ClassName = REL_ID_VER(og_id, ae_id);
 // 3. Comment the source of IDs for future reference
 //
 // SOURCES:
-// - VR:  Fallout 4 VR version X.X.X
-// - AE:  Fallout 4 version X.X.X
+// - OG:  Fallout 4 Original (Pre-AE) version 1.10.163 or earlier
+// - AE:  Fallout 4 Anniversary Edition / Next-Gen version 1.10.980+
 //
 // ============================================================================
 
@@ -28,7 +28,7 @@ namespace RE
         // MEMORY MANAGEMENT
         // ====================================================================
 
-        // Source: VTABLE dump VR 1.2.72 / AE 1.10.163
+        // Source: VTABLE dump OG 1.10.163 / AE 1.10.980
         inline constexpr auto IMemoryStoreBase = REL_ID_VER(0, 0);  // TODO: Find actual IDs
         inline constexpr auto IMemoryStore = REL_ID_VER(0, 0);
         inline constexpr auto IMemoryHeap = REL_ID_VER(0, 0);
@@ -38,7 +38,7 @@ namespace RE
         // FORMS (TESForm hierarchy)
         // ====================================================================
 
-        // Source: VTABLE dump VR 1.2.72 / AE 1.10.163
+        // Source: VTABLE dump OG 1.10.163 / AE 1.10.980
         inline constexpr auto TESForm = REL_ID_VER(0, 0);
         inline constexpr auto TESObjectREFR = REL_ID_VER(0, 0);
         inline constexpr auto Actor = REL_ID_VER(0, 0);
@@ -48,7 +48,7 @@ namespace RE
         // BSScript (Papyrus)
         // ====================================================================
 
-        // Source: VTABLE dump VR 1.2.72 / AE 1.10.163
+        // Source: VTABLE dump OG 1.10.163 / AE 1.10.980
         inline constexpr auto BSScript__IVirtualMachine = REL_ID_VER(0, 0);
         inline constexpr auto BSScript__Stack = REL_ID_VER(0, 0);
 
@@ -56,7 +56,7 @@ namespace RE
         // NI (NetImmerse/Gamebryo)
         // ====================================================================
 
-        // Source: VTABLE dump VR 1.2.72 / AE 1.10.163
+        // Source: VTABLE dump OG 1.10.163 / AE 1.10.980
         inline constexpr auto NiObject = REL_ID_VER(0, 0);
         inline constexpr auto NiAVObject = REL_ID_VER(0, 0);
         inline constexpr auto NiNode = REL_ID_VER(0, 0);
@@ -68,7 +68,7 @@ namespace RE
 
         // Example format:
         // // Source: [where you found the IDs]
-        // inline constexpr auto YourClassName = REL_ID_VER(vr_id, ae_id);
+        // inline constexpr auto YourClassName = REL_ID_VER(og_id, ae_id);
 
     }  // namespace VTABLE
 }  // namespace RE

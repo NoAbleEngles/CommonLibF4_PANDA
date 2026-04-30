@@ -16,6 +16,12 @@
 #include "RE/NetImmerse/NiPoint3.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	enum class ACTOR_CRITICAL_STAGE;
@@ -201,8 +207,8 @@ namespace RE
 	class __declspec(novtable) ActorPackageData
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ActorPackageData };
-		static constexpr auto VTABLE{ VTABLE::ActorPackageData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ActorPackageData, RTTI_AE::ActorPackageData) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::ActorPackageData, VTABLE_AE::ActorPackageData) };
 
 		virtual ~ActorPackageData();  // 00
 
@@ -269,8 +275,8 @@ namespace RE
 		public NiRefObject  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::EquippedItemData };
-		static constexpr auto VTABLE{ VTABLE::EquippedItemData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::EquippedItemData, RTTI_AE::EquippedItemData) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::EquippedItemData, VTABLE_AE::EquippedItemData) };
 
 		// add
 		virtual void SaveGame(BGSSaveFormBuffer* a_saveGameBuffer, const EquippedItem& a_equippedItem) const = 0;  // 02
@@ -283,8 +289,8 @@ namespace RE
 		public EquippedItemData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::EquippedWeaponData };
-		static constexpr auto VTABLE{ VTABLE::EquippedWeaponData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::EquippedWeaponData, RTTI_AE::EquippedWeaponData) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::EquippedWeaponData, VTABLE_AE::EquippedWeaponData) };
 
 		// members
 		TESAmmo* ammo;                                                                               // 10
@@ -508,28 +514,28 @@ namespace RE
 		[[nodiscard]] TESAmmo* GetCurrentAmmo(BGSEquipIndex a_equipIndex) const
 		{
 			using func_t = decltype(&AIProcess::GetCurrentAmmo);
-			REL::Relocation<func_t> func{ REL::ID(1154936) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1154936, 2232455) };
 			return func(this, a_equipIndex);
 		}
 
 		void KnockExplosion(Actor* a_actor, const NiPoint3& a_location, float a_magnitude)
 		{
 			using func_t = decltype(&AIProcess::KnockExplosion);
-			REL::Relocation<func_t> func{ REL::ID(533106) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(533106, 2232384) };
 			return func(this, a_actor, a_location, a_magnitude);
 		}
 
 		void SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_refr)
 		{
 			using func_t = decltype(&AIProcess::SetActorsDetectionEvent);
-			REL::Relocation<func_t> func{ REL::ID(1376336) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1376336, 2231738) };
 			return func(this, a_actor, a_location, a_soundLevel, a_refr);
 		}
 
 		void SetCurrentAmmo(BGSEquipIndex a_equipIndex, TESAmmo* a_ammo)
 		{
 			using func_t = decltype(&AIProcess::SetCurrentAmmo);
-			REL::Relocation<func_t> func{ REL::ID(795983) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(795983, 2232302) };
 			return func(this, a_equipIndex, a_ammo);
 		}
 
@@ -537,62 +543,62 @@ namespace RE
 		bool PlayIdle(Actor* a_actor, uint32_t a_action, TESIdleForm* a_idle, bool a_checkConditions = true, TESObjectREFR* a_targetRef = 0)
 		{
 			using func_t = decltype(&AIProcess::PlayIdle);
-			REL::Relocation<func_t> func{ REL::ID(1446774) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1446774, 2231704) };
 			return func(this, a_actor, a_action, a_idle, a_checkConditions, a_targetRef);
 		}
 
 		void StopCurrentIdle(RE::Actor* a, bool flag1 = false, bool flag2 = true)
 		{
 			using func_t = decltype(&AIProcess::StopCurrentIdle);
-			REL::Relocation<func_t> func{ REL::ID(434460) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(434460, 2231705) };
 			return func(this, a, flag1, flag2);
 		}
 
 		void ToggleDoNotInterruptAnimation()
 		{
 			using func_t = decltype(&AIProcess::ToggleDoNotInterruptAnimation);
-			REL::Relocation<func_t> func{ REL::ID(1429771) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1429771, 2231708) };
 			return func(this);
 		}
 
 		bool GetDoNotInterruptAnimation()
 		{
 			using func_t = decltype(&AIProcess::GetDoNotInterruptAnimation);
-			REL::Relocation<func_t> func{ REL::ID(1164050) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1164050, 2231709) };
 			return func(this);
 		}
 
 		bool GetAnimationGraphDelta(NiPoint3& a_pointOut, float& a_floatOut)
 		{
 			using func_t = decltype(&AIProcess::GetAnimationGraphDelta);
-			REL::Relocation<func_t> func{ REL::ID(472285) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(472285, 2232041) };
 			return func(this, a_pointOut, a_floatOut);
 		}
 
 		void SetAnimationGraphDelta(const NiPoint3& a_point, float a_float)
 		{
 			using func_t = decltype(&AIProcess::SetAnimationGraphDelta);
-			REL::Relocation<func_t> func{ REL::ID(1083937) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1083937, 2232042) };
 			return func(this, a_point, a_float);
 		}
 
 		void ClearCurrentPackage(RE::Actor* a_actor)
 		{
 			using func_t = decltype(&AIProcess::ClearCurrentPackage);
-			REL::Relocation<func_t> func{ REL::ID(241540) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(241540, 2231582) };
 			return func(this, a_actor);
 		}
 
 		void ClearCurrentDataForProcess(RE::Actor* a_actor)
 		{
 			using func_t = decltype(&AIProcess::ClearCurrentDataForProcess);
-			REL::Relocation<func_t> func{ REL::ID(577581) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(577581, 2232435) };
 			return func(this, a_actor);
 		}
 
 		TESObjectREFR* SetTarget(RE::Actor* a_actor, const ObjectRefHandle* a_target) {
 			using func_t = decltype(&AIProcess::SetTarget);
-			REL::Relocation<func_t> func{ REL::ID(376043) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(376043, 2231565) };
 			return func(this, a_actor, a_target);
 		}
 
@@ -600,7 +606,7 @@ namespace RE
 		void Set3DUpdateFlag(RE::RESET_3D_FLAGS flags)
 		{
 			using func_t = decltype(&AIProcess::Set3DUpdateFlag);
-			REL::Relocation<func_t> func{ REL::Offset(0xE74920) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(236542, 2232389) };
 			return func(this, flags);
 		}
 
@@ -608,21 +614,21 @@ namespace RE
 		RE::RESET_3D_FLAGS GetAll3DUpdateFlags() const
 		{
 			using func_t = decltype(&AIProcess::GetAll3DUpdateFlags);
-			REL::Relocation<func_t> func{ REL::Offset(0xE749A0) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(582098, 2232393) };
 			return func(this);
 		}
 
 		//panda E60860
 		void DoUpdate3dModel(Actor* a_actor, RE::RESET_3D_FLAGS flags) {
 			using func_t = decltype(&AIProcess::DoUpdate3dModel);
-			REL::Relocation<func_t> func{ REL::Offset(0xE60860) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(114457, 2232144) };
 			return func(this, a_actor, flags);
 		}
 
 		//panda 0xE78FB0
 		void RefreshClothExtraDataCache(RE::Actor* a_actor) {
 			using func_t = decltype(&AIProcess::RefreshClothExtraDataCache);
-			REL::Relocation<func_t> func{ REL::Offset(0xE78FB0) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(340568, 2232486) };
 			return func(this, a_actor);
 		};
 
@@ -630,15 +636,15 @@ namespace RE
 		void ClearClothExtraDataCache(RE::Actor* a_actor)
 		{
 			using func_t = decltype(&AIProcess::ClearClothExtraDataCache);
-			REL::Relocation<func_t> func{ REL::Offset(0xE79140) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(233747, 2232487) };
 			return func(this, a_actor);
 		};
 
-		//panda 0xE79180
+		//panda 0xE79180 this is just jump to AccessClothExtraDataCache
 		RE::BSClothExtraData* GetClothExtraDataCache()
 		{
 			using func_t = decltype(&AIProcess::GetClothExtraDataCache);
-			REL::Relocation<func_t> func{ REL::Offset(0xE79180) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(406238, 2232488) };
 			return func(this);
 		};
 
@@ -646,42 +652,42 @@ namespace RE
 		RE::BSClothExtraData* AccessClothExtraDataCache(RE::Actor* a_actor)
 		{
 			using func_t = decltype(&AIProcess::AccessClothExtraDataCache);
-			REL::Relocation<func_t> func{ REL::Offset(0xE839E0) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(457101, 2232583) };
 			return func(this, a_actor);
 		};
 
 		//panda 0xE79D20
 		void ResetDeferredKillStatus() {
 			using func_t = decltype(&AIProcess::ResetDeferredKillStatus);
-			REL::Relocation<func_t> func{ REL::Offset(0xE79D20) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1318960, 2232523) };
 			return func(this);
 		}
 
 		//panda 0xE7A830
 		void UpdateWeaponCullState(RE::Actor* a_actor) {
 			using func_t = decltype(&AIProcess::UpdateWeaponCullState);
-			REL::Relocation<func_t> func{ REL::Offset(0xE7A830) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1447551, 2232536) };
 			return func(this, a_actor);
 		}
 
 		//panda 0xE7A870
 		void ResetCullWeapons() {
 			using func_t = decltype(&AIProcess::ResetCullWeapons);
-			REL::Relocation<func_t> func{ REL::Offset(0xE7A870) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(37789, 2232537) };
 			return func(this);
 		}
 
 		//panda 0xE28200
 		void Update(Actor* actor) {
 			using func_t = decltype(&AIProcess::Update);
-			REL::Relocation<func_t> func{ REL::Offset(0xE28200) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(775148, 2231533) };
 			return func(this, actor);
 		}
 
 		//panda 0xE73370
 		bool AlignToFurnitureAndAddPostAnimSitSleep(Actor* actor) {
 			using func_t = decltype(&AIProcess::AlignToFurnitureAndAddPostAnimSitSleep);
-			REL::Relocation<func_t> func{ REL::Offset(0xE73370) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1468710, 2232357) };
 			return func(this, actor);
 		}
 
@@ -758,7 +764,7 @@ namespace RE
 		BGSObjectInstance* GetEquippedItemSlot(const BGSEquipSlot* a_slot, BGSObjectInstance* a_outInstance)
 		{
 			using func_t = decltype(&AIProcess::GetEquippedItemSlot);
-			REL::Relocation<func_t> func{ REL::Offset(0xE2BF70) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(111648, 2231624) };
 			return func(this, a_slot, a_outInstance);
 		}
 
@@ -768,7 +774,7 @@ namespace RE
 		bool GetEquippedItemIndex(BGSEquipIndex a_equipIndex, EquippedItem* a_outItem)
 		{
 			using func_t = decltype(&AIProcess::GetEquippedItemIndex);
-			REL::Relocation<func_t> func{ REL::Offset(0xE2C100) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(4042, 2231625) };
 			return func(this, a_equipIndex, a_outItem);
 		}
 
@@ -778,7 +784,7 @@ namespace RE
 		void GetItemsInSlot(const BGSEquipSlot* a_slot, BSScrapArray<EquippedItem>& a_outItems)
 		{
 			using func_t = decltype(&AIProcess::GetItemsInSlot);
-			REL::Relocation<func_t> func{ REL::Offset(0xE2C220) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1573363, 2231626) };
 			return func(this, a_slot, a_outItems);
 		}
 
@@ -789,7 +795,7 @@ namespace RE
 		void SetEquippedItem(Actor* a_actor, const BGSObjectInstance& a_object, const BGSEquipSlot* a_slot)
 		{
 			using func_t = decltype(&AIProcess::SetEquippedItem);
-			REL::Relocation<func_t> func{ REL::Offset(0xE2C3E0) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1200276, 2231627) };
 			return func(this, a_actor, a_object, a_slot);
 		}
 
@@ -800,7 +806,7 @@ namespace RE
 		void ClearEquippedItem(Actor* a_actor, TESForm* a_form, const BGSEquipSlot* a_slot)
 		{
 			using func_t = decltype(&AIProcess::ClearEquippedItem);
-			REL::Relocation<func_t> func{ REL::Offset(0xE2C630) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(28721, 2231628) };
 			return func(this, a_actor, a_form, a_slot);
 		}
 
@@ -811,7 +817,7 @@ namespace RE
 		void ClearEquippedItems(Actor* a_actor)
 		{
 			using func_t = decltype(&AIProcess::ClearEquippedItems);
-			REL::Relocation<func_t> func{ REL::Offset(0xE2C880) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(440142, 2231629) };
 			return func(this, a_actor);
 		}
 
@@ -824,7 +830,7 @@ namespace RE
 		void NotifyItemEquipped(Actor* a_actor, const EquippedItem& a_item)
 		{
 			using func_t = decltype(&AIProcess::NotifyItemEquipped);
-			REL::Relocation<func_t> func{ REL::Offset(0xE2CA00) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1477172, 2231630) };
 			return func(this, a_actor, a_item);
 		}
 
@@ -871,8 +877,8 @@ namespace RE
 	class __declspec(novtable) MagicTarget
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::MagicTarget };
-		static constexpr auto VTABLE{ VTABLE::MagicTarget };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::MagicTarget, RTTI_AE::MagicTarget) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::MagicTarget, VTABLE_AE::MagicTarget) };
 
 		struct AddTargetData;
 		struct SpellDispelData;
@@ -897,14 +903,14 @@ namespace RE
 		[[nodiscard]] bool IsTakingHealthDamageFromActiveEffect()
 		{
 			using func_t = decltype(&MagicTarget::IsTakingHealthDamageFromActiveEffect);
-			REL::Relocation<func_t> func{ REL::ID(999442) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(999442, 2226397) };
 			return func(this);
 		}
 
 		[[nodiscard]] bool IsTakingRadDamageFromActiveEffect()
 		{
 			using func_t = decltype(&MagicTarget::IsTakingRadDamageFromActiveEffect);
-			REL::Relocation<func_t> func{ REL::ID(1079111) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1079111, 2226398) };
 			return func(this);
 		}
 
@@ -928,8 +934,8 @@ namespace RE
 		public IMovementState  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ActorState };
-		static constexpr auto VTABLE{ VTABLE::ActorState };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ActorState, RTTI_AE::ActorState) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::ActorState, VTABLE_AE::ActorState) };
 
 		// add
 		virtual bool SetWeaponMagicDrawn(bool a_drawn);                // 21
@@ -970,8 +976,8 @@ namespace RE
 	class __declspec(novtable) IPostAnimationChannelUpdateFunctor
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::IPostAnimationChannelUpdateFunctor };
-		static constexpr auto VTABLE{ VTABLE::IPostAnimationChannelUpdateFunctor };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::IPostAnimationChannelUpdateFunctor, RTTI_AE::IPostAnimationChannelUpdateFunctor) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::IPostAnimationChannelUpdateFunctor, VTABLE_AE::IPostAnimationChannelUpdateFunctor) };
 
 		virtual ~IPostAnimationChannelUpdateFunctor() = default;  // 00
 
@@ -1015,8 +1021,8 @@ namespace RE
 		public BSTEventSource<ActorCPMEvent>                            // 278
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::Actor };
-		static constexpr auto VTABLE{ VTABLE::Actor };
+		static constexpr auto RTTI{ RTTI::Actor };		//Same OG/AE
+		static constexpr auto VTABLE{ VTABLE::Actor };	//Same OG/AE
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kACHR };
 
 		enum class BOOL_FLAGS
@@ -1170,14 +1176,14 @@ namespace RE
 		void AddPerk(BGSPerk* a_perk, std::uint8_t a_rank = 0)
 		{
 			using func_t = decltype(&Actor::AddPerk);
-			REL::Relocation<func_t> func{ REL::ID(187096) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(187096, 2230121) };
 			return func(this, a_perk, a_rank);
 		}
 
 		void QueueUpdate(bool bDoFaceGen, uint32_t unk2, bool DoQueue, uint32_t flags3D) 
 		{
 			using func_t = decltype(&Actor::QueueUpdate);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x00D8A1F0 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(302888, 2229913) };
 			return func(this, bDoFaceGen, unk2, DoQueue, flags3D);
 		}
 
@@ -1189,14 +1195,14 @@ namespace RE
 		[[nodiscard]] bool GetHostileToActor(Actor* a_actor)
 		{
 			using func_t = decltype(&Actor::GetHostileToActor);
-			REL::Relocation<func_t> func{ REL::ID(1148686) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1148686, 2229968) };
 			return func(this, a_actor);
 		}
 
 		[[nodiscard]] std::int16_t GetLevel()
 		{
 			using func_t = decltype(&Actor::GetLevel);
-			REL::Relocation<func_t> func{ REL::ID(661617) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(661617, 2229734) };
 			return func(this);
 		}
 
@@ -1205,35 +1211,35 @@ namespace RE
 		[[nodiscard]] std::uint8_t GetPerkRank(BGSPerk* a_perk)
 		{
 			using func_t = decltype(&Actor::GetPerkRank);
-			REL::Relocation<func_t> func{ REL::ID(1368313) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1368313, 2230125) };
 			return func(this, a_perk);
 		}
 
 		[[nodiscard]] bool IsJumping()
 		{
 			using func_t = decltype(&Actor::IsJumping);
-			REL::Relocation<func_t> func{ REL::ID(1041558) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1041558, 2229640) };
 			return func(this);
 		}
 
 		void RemovePerk(BGSPerk* a_perk)
 		{
 			using func_t = decltype(&Actor::RemovePerk);
-			REL::Relocation<func_t> func{ REL::ID(1316475) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1316475, 2230122) };
 			return func(this, a_perk);
 		}
 
 		void Reset3D(bool a_reloadAll, RESET_3D_FLAGS a_additionalFlags, bool a_queueReset, RESET_3D_FLAGS a_excludeFlags)
 		{
 			using func_t = decltype(&Actor::Reset3D);
-			REL::Relocation<func_t> func{ REL::ID(302888) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(302888, 2229913) };
 			return func(this, a_reloadAll, a_additionalFlags, a_queueReset, a_excludeFlags);
 		}
 
 		void RewardExperience(float a_amount, bool a_direct, TESObjectREFR* a_actionTarget, TESObjectREFR* a_killWeapon)
 		{
 			using func_t = decltype(&Actor::RewardExperience);
-			REL::Relocation<func_t> func{ REL::ID(262786) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(262786, 2230428) };
 			return func(this, a_amount, a_direct, a_actionTarget, a_killWeapon);
 		}
 
@@ -1247,21 +1253,21 @@ namespace RE
 		void TrespassAlarm(TESObjectREFR* a_refr, TESForm* a_owner, std::int32_t a_crime)
 		{
 			using func_t = decltype(&Actor::TrespassAlarm);
-			REL::Relocation<func_t> func{ REL::ID(1109888) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1109888, 2229834) };
 			return func(this, a_refr, a_owner, a_crime);
 		}
 
 		void EvaluatePackage(bool a_commandMode /*a_queue*/, bool a_force)
 		{
 			using func_t = decltype(&Actor::EvaluatePackage);
-			REL::Relocation<func_t> func{ REL::ID(1395257) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1395257, 2229805) };
 			return func(this, a_commandMode, a_force);
 		}
 
 		//panda 0xD7FF20
 		bool EvaluatePackageAfter3DLoaded(bool flag) {
 			using func_t = decltype(&Actor::EvaluatePackageAfter3DLoaded);
-			REL::Relocation<func_t> func{ REL::Offset(0xD7FF20) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1326547, 2229806) };
 			return func(this, flag);
 		}
 
@@ -1269,7 +1275,7 @@ namespace RE
 		void StopInteractingQuick(bool flag1 = true, bool flag2 = true, bool a_initializeNodes = false)
 		{
 			using func_t = decltype(&Actor::StopInteractingQuick);
-			REL::Relocation<func_t> func{ REL::ID(129904) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(129904, 2231227) };
 			//REL::Relocation<func_t> func{ REL::Offset(0xE0EAA0) };
 			return func(this, flag1, flag2, a_initializeNodes);
 		}
@@ -1277,63 +1283,63 @@ namespace RE
 		void SetGhost(bool a_ghost)
 		{
 			using func_t = decltype(&Actor::SetGhost);
-			REL::Relocation<func_t> func{ REL::ID(1377793) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1377793, 2229669) };
 			return func(this, a_ghost);
 		}
 
 		bool GetGhost()
 		{
 			using func_t = decltype(&Actor::GetGhost);
-			REL::Relocation<func_t> func{ REL::ID(1298473) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1298473, 2229668) };
 			return func(this);
 		}
 
 		ActorHandle GetActorHandle()
 		{
 			using func_t = decltype(&Actor::GetActorHandle);
-			REL::Relocation<func_t> func{ REL::ID(1145222) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1145222, 2229894) };
 			return func(this);
 		}
 
 		void SetRestrained(bool a_restrained)
 		{
 			using func_t = decltype(&Actor::SetRestrained);
-			REL::Relocation<func_t> func{ REL::ID(316742) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(316742, 2229910) };
 			return func(this, a_restrained);
 		}
 
 		virtual void ModifyInitialAnimationStateImpl(bool a_initInstant) override
 		{
 			using func_t = decltype(&Actor::ModifyInitialAnimationStateImpl);
-			REL::Relocation<func_t> func{ REL::ID(825615) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(825615, 2230455) };
 			return func(this, a_initInstant);
 		}
 
 		void DisableCollision()
 		{
 			using func_t = decltype(&Actor::DisableCollision);
-			REL::Relocation<func_t> func{ REL::ID(475952) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(475952, 2229653) };
 			return func(this);
 		}
 
 		void EnableCollision()
 		{
 			using func_t = decltype(&Actor::EnableCollision);
-			REL::Relocation<func_t> func{ REL::ID(1274117) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1274117, 2229652) };
 			return func(this);
 		}
 
 		void WarpActorAndFollowers(const TESObjectREFR* a_locationRef, bool a_spaceOutFollowers, bool a_queue, bool a_resetAI)
 		{
 			using func_t = decltype(&Actor::WarpActorAndFollowers);
-			REL::Relocation<func_t> func{ REL::ID(574970) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(574970, 2229839) };
 			return func(this, a_locationRef, a_spaceOutFollowers, a_queue, a_resetAI);
 		}
 
 		void WarpTo(const NiPoint3& a_point, float a_zRotation, float a_xRotation, TESObjectCELL* a_cell, TESWorldSpace* a_worldspace, bool doPathing, bool doFade = false, bool isPlayer = false)
 		{
 			using func_t = decltype(&Actor::WarpTo);
-			REL::Relocation<func_t> func{ REL::ID(728864) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(728864, 2229838) };
 			return func(this, a_point, a_zRotation, a_xRotation, a_cell, a_worldspace, doPathing, doFade, isPlayer);
 		}
 
@@ -1344,42 +1350,42 @@ namespace RE
 		void ClearLookAtTarget()
 		{
 			using func_t = decltype(&Actor::ClearLookAtTarget);
-			REL::Relocation<func_t> func{ REL::ID(1345971) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1345971, 2230291) };
 			return func(this);
 		}
 
 		void TurnOffHeadtracking()
 		{
 			using func_t = decltype(&Actor::TurnOffHeadtracking);
-			REL::Relocation<func_t> func{ REL::ID(149104) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(149104, 2230240) };
 			return func(this);
 		}
 
 		void StopAlarmOnActor()
 		{
 			using func_t = decltype(&Actor::StopAlarmOnActor);
-			REL::Relocation<func_t> func{ REL::ID(1564830) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1564830, 2229667) };
 			return func(this);
 		}
 
 		bool GetCanDoFavor(bool a_unk = false)
 		{
 			using func_t = decltype(&Actor::GetCanDoFavor);
-			REL::Relocation<func_t> func{ REL::ID(46113) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(46113, 2230148) };
 			return func(this, a_unk);
 		}
 
 		bool SetCanDoFavor(bool a_canDoFavor)
 		{
 			using func_t = decltype(&Actor::SetCanDoFavor);
-			REL::Relocation<func_t> func{ REL::ID(391670) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(391670, 2230149) };
 			return func(this, a_canDoFavor);
 		}
 
 		void StopMoving(float a_decelerationMult = 1.0f)
 		{
 			using func_t = decltype(&Actor::StopMoving);
-			REL::Relocation<func_t> func{ REL::ID(940952) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(940952, 2230262) };
 			return func(this, a_decelerationMult);
 		}
 
@@ -1427,7 +1433,7 @@ namespace RE
 
 		void ClearPath() {
 			using func_t = decltype(&Actor::ClearPath);
-			REL::Relocation<func_t> func{ REL::Offset(0xDAEEC0) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(927158, 2230263) };
 			return func(this);
 			}
 
@@ -1495,7 +1501,7 @@ namespace RE
 	public:
 		[[nodiscard]] static ActorEquipManager* GetSingleton()
 		{
-			REL::Relocation<ActorEquipManager**> singleton{ REL::ID(1174340) };
+			REL::Relocation<ActorEquipManager**> singleton{ REL::SelectVersionID(1174340, 4798287) };
 			return *singleton;
 		}
 
@@ -1512,7 +1518,7 @@ namespace RE
 			bool a_locked)
 		{
 			using func_t = decltype(&ActorEquipManager::EquipObject);
-			REL::Relocation<func_t> func{ REL::ID(988029) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(988029, 2231392) };
 			return func(this, a_actor, a_object, a_stackID, a_number, a_slot, a_queueEquip, a_forceEquip, a_playSounds, a_applyNow, a_locked);
 		}
 
@@ -1529,7 +1535,7 @@ namespace RE
 			const BGSEquipSlot* a_slotBeingReplaced)
 		{
 			using func_t = decltype(&ActorEquipManager::UnequipObject);
-			REL::Relocation<func_t> func{ REL::ID(1292493) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1292493, 2231395) };
 			return func(this, a_actor, a_object, a_number, a_slot, a_stackID, a_queueEquip, a_forceEquip, a_playSounds, a_applyNow, a_slotBeingReplaced);
 		}
 	};
