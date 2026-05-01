@@ -9,6 +9,12 @@
 #include "RE/Bethesda/BSTSmartPointer.h"
 #include "RE/Bethesda/MemoryManager.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE::BSResource::Archive2
 {
 	class DataReader
@@ -69,7 +75,7 @@ namespace RE::BSResource::Archive2
 		public BSTEventSink<ClearRegistryEvent>  // 0008
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSResource__Archive2__Index };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSResource__Archive2__Index, RTTI_AE::BSResource__Archive2__Index) };
 		static constexpr auto VTABLE{ VTABLE::BSResource__Archive2__Index };
 
 		class Pager;
@@ -156,7 +162,7 @@ namespace RE::BSResource::Archive2
 		public Stream  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSResource__Archive2__ReaderStream };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSResource__Archive2__ReaderStream, RTTI_AE::BSResource__Archive2__ReaderStream) };
 		static constexpr auto VTABLE{ VTABLE::BSResource__Archive2__ReaderStream };
 
 		struct PlatformContext;
@@ -245,25 +251,43 @@ namespace RE::BSResource::Archive2
 
 		// members
 		BSTSmartPointer<Stream> source;  // 10
+#if defined(F4_GAME_VERSION_AE)
+		// AE version has additional fields
+		std::uint32_t unk18 = 0;          // 18 (new in AE)
+		std::uint32_t unk1C = 0;          // 1C (new in AE)
+#endif
 		union
 		{
 			StandardContext* standardCtx = nullptr;
 			PlatformContext* platformCtx;
-		};                                        // 18
-		const std::uint64_t startOffset = 0;      // 02
+		};                                        // 18 (OG) / 20 (AE)
+#if defined(F4_GAME_VERSION_AE)
+		const std::uint64_t startOffset = 0;      // 28
+		BSFixedString name;                       // 30
+		std::uint32_t currentRelativeOffset = 0;  // 38
+		std::uint32_t compressedSize = 0;         // 3C
+		std::uint32_t uncompressedSize = 0;       // 40
+		std::uint32_t flags = 0;                  // 44
+#else
+		const std::uint64_t startOffset = 0;      // 20
 		BSFixedString name;                       // 28
 		std::uint32_t currentRelativeOffset = 0;  // 30
 		std::uint32_t compressedSize = 0;         // 34
 		std::uint32_t uncompressedSize = 0;       // 38
 		std::uint32_t flags = 0;                  // 3C
+#endif
 	};
+#if defined(F4_GAME_VERSION_AE)
+	static_assert(sizeof(ReaderStream) == 0x48);
+#else
 	static_assert(sizeof(ReaderStream) == 0x40);
+#endif
 
 	class __declspec(novtable) AsyncReaderStream :
 		public AsyncStream  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSResource__Archive2__AsyncReaderStream };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSResource__Archive2__AsyncReaderStream, RTTI_AE::BSResource__Archive2__AsyncReaderStream) };
 		static constexpr auto VTABLE{ VTABLE::BSResource__Archive2__AsyncReaderStream };
 
 		AsyncReaderStream() { stl::emplace_vtable<AsyncReaderStream>(this); }
@@ -272,14 +296,14 @@ namespace RE::BSResource::Archive2
 		ErrorCode DoOpen() override  // 01
 		{
 			using func_t = decltype(&AsyncReaderStream::DoOpen);
-			REL::Relocation<func_t> func{ REL::ID(1401160) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1401160, 2269386) };
 			return func(this);
 		}
 
 		void DoClose() override  // 02
 		{
 			using func_t = decltype(&AsyncReaderStream::DoClose);
-			REL::Relocation<func_t> func{ REL::ID(883012) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(883012, 2269380) };
 			return func(this);
 		}
 
@@ -287,7 +311,7 @@ namespace RE::BSResource::Archive2
 			BSTSmartPointer<AsyncStream>& a_result) const override  // 05
 		{
 			using func_t = decltype(&AsyncReaderStream::DoClone);
-			REL::Relocation<func_t> func{ REL::ID(803750) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(803750, 2269379) };
 			return func(this, a_result);
 		}
 
@@ -297,7 +321,7 @@ namespace RE::BSResource::Archive2
 			std::uint64_t a_offset) const override  // 06
 		{
 			using func_t = decltype(&AsyncReaderStream::DoStartRead);
-			REL::Relocation<func_t> func{ REL::ID(1215072) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1215072, 2269395) };
 			return func(this, a_buffer, a_bytes, a_offset);
 		}
 
@@ -307,7 +331,7 @@ namespace RE::BSResource::Archive2
 			std::uint64_t a_offset) const override  // 07
 		{
 			using func_t = decltype(&AsyncReaderStream::DoStartPacketAlignedBufferedRead);
-			REL::Relocation<func_t> func{ REL::ID(603387) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(603387, 2269394) };
 			return func(this, a_buffer, a_bytes, a_offset);
 		}
 
@@ -330,7 +354,7 @@ namespace RE::BSResource::Archive2
 			bool a_block) override  // 0B
 		{
 			using func_t = decltype(&AsyncReaderStream::DoWait);
-			REL::Relocation<func_t> func{ REL::ID(244066) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(244066, 2269399) };
 			return func(this, a_transferred, a_block);
 		}
 

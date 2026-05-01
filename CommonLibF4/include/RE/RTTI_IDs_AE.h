@@ -82,9 +82,32 @@ namespace RE
 		inline constexpr REL::ID BGSMovementType{ 4842288 };
 		inline constexpr REL::ID BGSSoundDescriptorForm{ 4841186 };
 		inline constexpr REL::ID BGSSoundCategory{ 4840064 };
+		inline constexpr REL::ID BGSSoundOutput{ 4840062 };
+		inline constexpr REL::ID BGSCollisionLayer{ 4841360 };
+		inline constexpr REL::ID BGSColorForm{ 4841148 };
+		inline constexpr REL::ID BGSReverbParameters{ 4841854 };
+		inline constexpr REL::ID BGSPackIn{ 4841354 };
+		inline constexpr REL::ID BGSAimModel{ 4841280 };
+		inline constexpr REL::ID BGSConstructibleObject{ 4841302 };
+		inline constexpr REL::ID BGSMaterialSwap{ 4839802 };
+		inline constexpr REL::ID BGSZoomData{ 4841400 };
+		inline constexpr REL::ID BGSInstanceNamingRules{ 4841244 };
+		inline constexpr REL::ID BGSSoundKeywordMapping{ 4841260 };
+		inline constexpr REL::ID BGSAudioEffectChain{ 4841196 };
+		inline constexpr REL::ID BGSAttractionRule{ 4841146 };
+		inline constexpr REL::ID BGSSoundCategorySnapshot{ 4841254 };
+		inline constexpr REL::ID BGSSoundTagSet{ 4839816 };
+		inline constexpr REL::ID BSLensFlareRenderData{ 4841326 };
+		inline constexpr REL::ID BGSLensFlare{ 4841324 };
+		inline constexpr REL::ID BGSGodRays{ 4840076 };
+		
+		//ActorValueInfo
+		inline constexpr REL::ID ActorValueInfo{ 24839932 };
 
-
-
+		//Archive2
+		inline constexpr REL::ID BSResource__Archive2__Index{ 4858801 };
+		inline constexpr REL::ID BSResource__Archive2__ReaderStream{ 4858797 };
+		inline constexpr REL::ID BSResource__Archive2__AsyncReaderStream{ 4858807 };
 
 
 		// Add more AE-specific RTTI IDs here as needed
