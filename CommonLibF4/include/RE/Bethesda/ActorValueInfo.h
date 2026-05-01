@@ -207,7 +207,7 @@ namespace RE
 		public TESDescription  // 030
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ActorValueInfo };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ActorValueInfo, RTTI_AE::ActorValueInfo) };
 		static constexpr auto VTABLE{ VTABLE::ActorValueInfo };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kAVIF };
 
