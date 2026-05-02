@@ -109,7 +109,34 @@ namespace RE
 		inline constexpr REL::ID BSResource__Archive2__ReaderStream{ 4858797 };
 		inline constexpr REL::ID BSResource__Archive2__AsyncReaderStream{ 4858807 };
 
+		// BGSBaseAliases
+		inline constexpr REL::ID ExtraReferenceHandles{ 4840188 };
+		inline constexpr REL::ID BGSRefAlias{ 4841170 };
 
+		// BGSCharacterTint
+		inline constexpr REL::ID BGSCharacterTint__Template__Entry{ 4841156 };
+		inline constexpr REL::ID BGSCharacterTint__Template__Mask{ 4841158 };
+		inline constexpr REL::ID BGSCharacterTint__Template__Palette{ 4841160 };
+		inline constexpr REL::ID BGSCharacterTint__Template__TextureSet{ 4841164 };
+		inline constexpr REL::ID BGSCharacterTint__Entry{ 4841150 };
+		inline constexpr REL::ID BGSCharacterTint__MaskEntry{ 4841152 };
+		inline constexpr REL::ID BGSCharacterTint__PaletteEntry{ 4841154 };
+		inline constexpr REL::ID BGSCharacterTint__TextureSetEntry{ 4841162 };
+
+		// BGSDefaultObjectManager
+		inline constexpr REL::ID BGSDefaultObjectManager{ 4841884 };
+		inline constexpr REL::ID BGSDefaultObject{ 4841238 };
+
+		// BGSHeadPart
+		inline constexpr REL::ID BGSHeadPart{ 4842268 };
+
+		// BGSInventoryItem
+		inline constexpr REL::ID BGSInventoryItem__Stack{ 4840784 };
+		inline constexpr REL::ID BGSInventoryItem__StackDataCompareFunctor{ 4840770 };
+		inline constexpr REL::ID BGSInventoryItem__CheckStackIDFunctor{ 4840772 };
+		inline constexpr REL::ID BGSInventoryItem__StackDataWriteFunctor{ 4840776 };
+		inline constexpr auto BGSInventoryItem__ModifyModDataFunctor{ 0x3758a50 };
+		inline constexpr REL::ID __ApplyChangesFunctor{ 4847168 };
 		// Add more AE-specific RTTI IDs here as needed
 	}
 }

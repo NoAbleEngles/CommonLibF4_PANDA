@@ -4,6 +4,12 @@
 #include "RE/Bethesda/BSTSingleton.h"
 #include "RE/Bethesda/TESForms.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	enum class DEFAULT_OBJECT
@@ -428,10 +434,15 @@ namespace RE
 	};
 	static_assert(sizeof(DEFAULT_OBJECT_DATA) == 0x20);
 
-	[[nodiscard]] inline std::span<DEFAULT_OBJECT_DATA, 394> GetDefaultObjectData()
+	[[nodiscard]] inline std::span<DEFAULT_OBJECT_DATA> GetDefaultObjectData()
 	{
-		REL::Relocation<DEFAULT_OBJECT_DATA(*)[394]> data{ REL::ID(838886) };
-		return { *data };
+		if constexpr (REL::GAME_VERSION == REL::GameVersion::AE) {
+			REL::Relocation<DEFAULT_OBJECT_DATA(*)[395]> data{ REL::ID(838886) };
+			return { *data };
+		} else {
+			REL::Relocation<DEFAULT_OBJECT_DATA(*)[394]> data{ REL::ID(838886) };
+			return { *data };
+		}
 	}
 
 	class __declspec(novtable) BGSDefaultObjectManager :
@@ -439,14 +450,14 @@ namespace RE
 		public BSTSingletonImplicit<BGSDefaultObjectManager>  // 20
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSDefaultObjectManager };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSDefaultObjectManager, RTTI_AE::BGSDefaultObjectManager) };
 		static constexpr auto VTABLE{ VTABLE::BGSDefaultObjectManager };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDOBJ };
 
 		[[nodiscard]] static BGSDefaultObjectManager* GetSingleton()
 		{
 			using func_t = decltype(&BGSDefaultObjectManager::GetSingleton);
-			REL::Relocation<func_t> func{ REL::ID(484974) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(484974, 2192468) };
 			return func();
 		}
 
@@ -478,7 +489,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSDefaultObject };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSDefaultObject, RTTI_AE::BGSDefaultObject) };
 		static constexpr auto VTABLE{ VTABLE::BGSDefaultObject };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDFOB };
 
@@ -489,7 +500,7 @@ namespace RE
 
 		[[nodiscard]] static BSTArray<BGSDefaultObject*>* GetSingleton()
 		{
-			REL::Relocation<BSTArray<BGSDefaultObject*>**> singleton{ REL::ID(561749) };
+			REL::Relocation<BSTArray<BGSDefaultObject*>**> singleton{ REL::SelectVersionID(561749, 4797762) };
 			return *singleton;
 		}
 
@@ -508,7 +519,7 @@ namespace RE
 		BGSDefaultObject* ctor(const char* a_name, ENUM_FORM_ID a_formType, const char* a_description)
 		{
 			using func_t = decltype(&BGSDefaultObject::ctor);
-			REL::Relocation<func_t> func{ REL::ID(1144014) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1144014, 2197003) };
 			return func(this, a_name, a_formType, a_description);
 		}
 	};

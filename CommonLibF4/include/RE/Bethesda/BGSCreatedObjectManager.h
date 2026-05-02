@@ -6,6 +6,12 @@
 #include "RE/Bethesda/BSTSingleton.h"
 #include "RE/Bethesda/BSTSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class AlchemyItem;
@@ -41,6 +47,7 @@ namespace RE
 			}
 		};
 
+
 		struct CreatedMagicItemData
 		{
 		public:
@@ -52,21 +59,21 @@ namespace RE
 
 		[[nodiscard]] static BGSCreatedObjectManager* GetSingleton()
 		{
-			REL::Relocation<BGSCreatedObjectManager**> singleton{ REL::ID(1000678) };
+			REL::Relocation<BGSCreatedObjectManager**> singleton{ REL::SelectVersionID(1000678, 4796296) };
 			return *singleton;
 		}
 
 		void DecrementRef(AlchemyItem* a_alchItem)
 		{
 			using func_t = decltype(&BGSCreatedObjectManager::DecrementRef);
-			REL::Relocation<func_t> func{ REL::ID(230928) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(230928, 2228455) };
 			return func(this, a_alchItem);
 		}
 
 		void IncrementRef(AlchemyItem* a_alchItem)
 		{
 			using func_t = decltype(&BGSCreatedObjectManager::IncrementRef);
-			REL::Relocation<func_t> func{ REL::ID(1042515) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1042515, 2228454) };
 			return func(this, a_alchItem);
 		}
 
