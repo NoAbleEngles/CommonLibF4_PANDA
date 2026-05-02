@@ -6,6 +6,12 @@
 #include "RE/Bethesda/TESForms.h"
 #include "REL/Relocation.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class TESFile;
@@ -70,7 +76,7 @@ namespace RE
 			class __declspec(novtable) Entry
 			{
 			public:
-				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__Entry };
+				static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCharacterTint__Template__Entry, RTTI_AE::BGSCharacterTint__Template__Entry) };
 				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__Entry };
 
 				virtual ~Entry() {};							  // 00
@@ -127,7 +133,7 @@ namespace RE
 
 			class Mask : public Entry
 			{
-				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__Mask };
+				static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCharacterTint__Template__Mask, RTTI_AE::BGSCharacterTint__Template__Mask) };
 				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__Mask };
 			public:
 				virtual ~Mask() {};                               // 00
@@ -146,7 +152,7 @@ namespace RE
 
 			class Palette : public Entry
 			{
-				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__Palette };
+				static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCharacterTint__Template__Palette, RTTI_AE::BGSCharacterTint__Template__Palette) };
 				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__Palette };
 			public:
 				virtual ~Palette() {};                            // 00
@@ -185,7 +191,7 @@ namespace RE
 
 			class TextureSet : public Entry 
 			{
-				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__TextureSet };
+				static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCharacterTint__Template__TextureSet, RTTI_AE::BGSCharacterTint__Template__TextureSet) };
 				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__TextureSet };
 
 			public:
@@ -208,7 +214,7 @@ namespace RE
 
 		class Entry
 		{
-			static constexpr auto RTTI{ RTTI::BGSCharacterTint__Entry };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCharacterTint__Entry, RTTI_AE::BGSCharacterTint__Entry) };
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Entry };
 		public:
 			virtual ~Entry() {};                                                            // 00
@@ -250,7 +256,7 @@ namespace RE
 
 		class MaskEntry : public Entry
 		{
-			static constexpr auto RTTI{ RTTI::BGSCharacterTint__MaskEntry };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCharacterTint__MaskEntry, RTTI_AE::BGSCharacterTint__MaskEntry) };
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__MaskEntry };
 		public:
 			virtual ~MaskEntry() {};
@@ -263,7 +269,7 @@ namespace RE
 
 		class PaletteEntry : public Entry
 		{
-			static constexpr auto RTTI{ RTTI::BGSCharacterTint__PaletteEntry };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCharacterTint__PaletteEntry, RTTI_AE::BGSCharacterTint__PaletteEntry) };
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__PaletteEntry };
 		public:
 			virtual ~PaletteEntry() {};
@@ -294,7 +300,7 @@ namespace RE
 
 		class TextureSetEntry : public Entry
 		{
-			static constexpr auto RTTI{ RTTI::BGSCharacterTint__TextureSetEntry };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCharacterTint__TextureSetEntry, RTTI_AE::BGSCharacterTint__TextureSetEntry) };
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__TextureSetEntry };
 		public:
 			virtual ~TextureSetEntry() {};																// 00

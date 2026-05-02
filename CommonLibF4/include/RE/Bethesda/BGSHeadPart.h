@@ -6,6 +6,12 @@
 #include "RE/Bethesda/TESCondition.h"
 #include "RE/Bethesda/TESForms.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class __declspec(novtable) BGSHeadPart :
@@ -14,7 +20,7 @@ namespace RE
 		public BGSModelMaterialSwap  // 030
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSHeadPart };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSHeadPart, RTTI_AE::BGSHeadPart) };
 		static constexpr auto VTABLE{ VTABLE::BGSHeadPart };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kHDPT };
 

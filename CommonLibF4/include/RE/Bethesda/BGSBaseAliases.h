@@ -2,6 +2,12 @@
 
 #include "RE/Bethesda/BSFixedString.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class TESCondition;
@@ -10,7 +16,7 @@ namespace RE
 	class __declspec(novtable) BGSBaseAlias
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraReferenceHandles };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraReferenceHandles, RTTI_AE::ExtraReferenceHandles) };
 		static constexpr auto VTABLE{ VTABLE::ExtraReferenceHandles };
 
 		enum class FLAGS : unsigned
@@ -69,7 +75,7 @@ namespace RE
 		public BGSBaseAlias  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSRefAlias };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSRefAlias, RTTI_AE::BGSRefAlias) };
 		static constexpr auto VTABLE{ VTABLE::BGSRefAlias };
 		static constexpr auto TYPE{ "Ref"sv };
 
