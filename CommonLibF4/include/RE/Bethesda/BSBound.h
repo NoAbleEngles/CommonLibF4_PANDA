@@ -11,6 +11,12 @@
 #include "RE/NetImmerse/NiTransform.h"
 #include "REL/Relocation.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class __declspec(novtable) BSBound :

@@ -3,6 +3,12 @@
 #include "RE/NetImmerse/NiPoint3.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BSFadeNode;
@@ -12,7 +18,7 @@ namespace RE
 	class __declspec(novtable) BGSPrimitive
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSPrimitive };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSPrimitive, RTTI_AE::BGSPrimitive) };
 		static constexpr auto VTABLE{ VTABLE::BGSPrimitive };
 
 		enum class PRIMITIVE_TYPE

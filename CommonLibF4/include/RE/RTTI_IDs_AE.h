@@ -137,6 +137,32 @@ namespace RE
 		inline constexpr REL::ID BGSInventoryItem__StackDataWriteFunctor{ 4840776 };
 		inline constexpr auto BGSInventoryItem__ModifyModDataFunctor{ 0x3758a50 };
 		inline constexpr REL::ID __ApplyChangesFunctor{ 4847168 };
-		// Add more AE-specific RTTI IDs here as needed
+
+		//BGSMod
+		inline constexpr REL::ID BGSMod__Container{ 4839796 };
+		inline constexpr REL::ID BGSMod__Attachment__Mod{ 4839788 };
+		inline constexpr REL::ID BGSMod__Template__Item{ 4839794 };
+		inline constexpr REL::ID BGSMod__Template__Items{ 4839790 };
+
+		//BGSPrimitive
+		inline constexpr REL::ID BGSPrimitive{ 4840836 };
+
+		//BGSStoryManagerTreeVisitor
+		inline constexpr REL::ID BGSStoryManagerTreeVisitor{ 4844060 };
+		inline constexpr REL::ID BGSStoryManagerTreeForm{ 4840556 };
+		inline constexpr REL::ID TESQuest{ 4840074 };
+		inline constexpr REL::ID BGSStoryManagerNodeBase{ 4840554 };
+		inline constexpr REL::ID BGSStoryManagerBranchNode{ 4840552 };
+		inline constexpr REL::ID BGSStoryManagerQuestNode{ 4844082 };
+		inline constexpr REL::ID BGSStoryManagerEventNode{ 4844076 };
+
+		//BGSTextureSet
+		inline constexpr REL::ID BGSTextureSet{ 4841294 };
+
+		//bhkCharacterController
+		inline constexpr REL::ID bhkNPCollisionObjectBase{ 4859769 };
+		inline constexpr REL::ID bhkNPCollisionObject{ 4859767 };
+		inline constexpr REL::ID bhkNPCollisionObjectUnlinked{ 4859771 };
+		inline constexpr REL::ID bhkCharacterController{ 4859801 };
 	}
 }

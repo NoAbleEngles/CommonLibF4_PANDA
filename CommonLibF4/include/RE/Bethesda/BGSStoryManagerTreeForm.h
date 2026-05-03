@@ -12,6 +12,12 @@
 #include "RE/Bethesda/TESForms.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BGSBaseAlias;
@@ -29,7 +35,7 @@ namespace RE
 	class __declspec(novtable) BGSStoryManagerTreeVisitor
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSStoryManagerTreeVisitor };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSStoryManagerTreeVisitor, RTTI_AE::BGSStoryManagerTreeVisitor) };
 		static constexpr auto VTABLE{ VTABLE::BGSStoryManagerTreeVisitor };
 
 		enum class VisitControl;
@@ -54,7 +60,7 @@ namespace RE
 		public TESForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSStoryManagerTreeForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSStoryManagerTreeForm, RTTI_AE::BGSStoryManagerTreeForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSStoryManagerTreeForm };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kNONE };
 
@@ -85,7 +91,7 @@ namespace RE
 		public TESFullName               // 028
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESQuest };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESQuest, RTTI_AE::TESQuest) };
 		static constexpr auto VTABLE{ VTABLE::TESQuest };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kQUST };
 
@@ -97,7 +103,7 @@ namespace RE
 		void AddRefToCollectionAlias(const BGSBaseAlias& alias, TESObjectREFR& ref)
 		{
 			using func_t = decltype(&TESQuest::AddRefToCollectionAlias);
-			REL::Relocation<func_t> func{ REL::ID(1377726) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1377726, 2207793) };
 			return func(this, alias, ref);
 		}
 
@@ -105,14 +111,14 @@ namespace RE
 		void RemoveRefFromCollectionAlias(const BGSBaseAlias& alias, TESObjectREFR& ref)
 		{
 			using func_t = decltype(&TESQuest::RemoveRefFromCollectionAlias);
-			REL::Relocation<func_t> func{ REL::ID(313973) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(313973, 2207797) };
 			return func(this, alias, ref);
 		}
 
 		bool IsStageDone(uint16_t stage) const
 		{
 			using func_t = decltype(&TESQuest::IsStageDone);
-			REL::Relocation<func_t> func{ REL::Offset(0x5D7370) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(845755, 2207744) };
 			return func(this, stage);
 		}
 
@@ -154,7 +160,7 @@ namespace RE
 		public BGSStoryManagerTreeForm  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSStoryManagerNodeBase };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSStoryManagerNodeBase, RTTI_AE::BGSStoryManagerNodeBase) };
 		static constexpr auto VTABLE{ VTABLE::BGSStoryManagerNodeBase };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kNONE };
 
@@ -174,7 +180,7 @@ namespace RE
 		public BGSStoryManagerNodeBase  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSStoryManagerBranchNode };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSStoryManagerBranchNode, RTTI_AE::BGSStoryManagerBranchNode) };
 		static constexpr auto VTABLE{ VTABLE::BGSStoryManagerBranchNode };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSMBN };
 
@@ -187,7 +193,7 @@ namespace RE
 		public BGSStoryManagerNodeBase  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSStoryManagerQuestNode };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSStoryManagerQuestNode, RTTI_AE::BGSStoryManagerQuestNode) };
 		static constexpr auto VTABLE{ VTABLE::BGSStoryManagerQuestNode };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSMQN };
 
@@ -204,7 +210,7 @@ namespace RE
 		public BGSStoryManagerBranchNode  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSStoryManagerEventNode };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSStoryManagerEventNode, RTTI_AE::BGSStoryManagerEventNode) };
 		static constexpr auto VTABLE{ VTABLE::BGSStoryManagerEventNode };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kSMEN };
 
