@@ -16,6 +16,12 @@
 #include "RE/NetImmerse/NiPoint3.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	enum class COL_LAYER;
@@ -60,8 +66,8 @@ namespace RE
 		public NiCollisionObject  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::bhkNPCollisionObjectBase };
-		static constexpr auto VTABLE{ VTABLE::bhkNPCollisionObjectBase };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::bhkNPCollisionObjectBase, RTTI_AE::bhkNPCollisionObjectBase) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLEOffset(REL::Offset(0x2E3DE68), REL::Offset(0x26a5050)) };
 
 		// add
 		virtual void LockMotionImpl() = 0;  // 2C
@@ -75,7 +81,7 @@ namespace RE
 		public bhkNPCollisionObjectBase  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::bhkNPCollisionObject };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::bhkNPCollisionObject, RTTI_AE::bhkNPCollisionObject) };
 		static constexpr auto VTABLE{ VTABLE::bhkNPCollisionObject };
 
 		// add
@@ -94,7 +100,7 @@ namespace RE
 		public bhkNPCollisionObject  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::bhkNPCollisionObjectUnlinked };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::bhkNPCollisionObjectUnlinked, RTTI_AE::bhkNPCollisionObjectUnlinked) };
 		static constexpr auto VTABLE{ VTABLE::bhkNPCollisionObjectUnlinked };
 	};
 	static_assert(sizeof(bhkNPCollisionObjectUnlinked) == 0x30);
@@ -106,7 +112,7 @@ namespace RE
 		public BSTEventSource<bhkCharacterStateChangeEvent>  // 0E0
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::bhkCharacterController };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::bhkCharacterController, RTTI_AE::bhkCharacterController) };
 		static constexpr auto VTABLE{ VTABLE::bhkCharacterController };
 
 		enum class CHARACTER_SIZE;
@@ -144,26 +150,26 @@ namespace RE
 		void SetPosition(const NiPoint3& a_position)
 		{
 			using func_t = decltype(&bhkCharacterController::SetPosition);
-			REL::Relocation<func_t> func{ REL::ID(286114) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(286114, 2278185) };
 			return func(this, a_position);
 		}
 
 		void SetImmobile(bool a_immobile) {
 			using func_t = decltype(&bhkCharacterController::SetImmobile);
-			REL::Relocation<func_t> func{ REL::ID(905437) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(905437, 2278203) };
 			return func(this, a_immobile);
 		}
 
 		void SetBumperEnabled(bool a_bumper)
 		{
 			using func_t = decltype(&bhkCharacterController::SetBumperEnabled);
-			REL::Relocation<func_t> func{ REL::ID(414489) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(414489, 2278199) };
 			return func(this, a_bumper);
 		}
 
 		void SetNoSim(bool a_noSim) {
 			using func_t = decltype(&bhkCharacterController::SetNoSim);
-			REL::Relocation<func_t> func{ REL::ID(40068) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(40068, 2278226) };
 			return func(this, a_noSim);
 		}
 

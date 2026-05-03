@@ -6,6 +6,12 @@
 #include "RE/Bethesda/FormComponents.h"
 #include "RE/Bethesda/TESForms.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	struct INSTANCE_FILTER;
@@ -134,7 +140,7 @@ namespace RE::BGSMod
 	{
 		[[nodiscard]] inline BSTHashMap<const Mod*, TESObjectMISC*>& GetAllLooseMods()
 		{
-			REL::Relocation<BSTHashMap<const Mod*, TESObjectMISC*>*> mods{ REL::ID(1108112), -0x8 };
+			REL::Relocation<BSTHashMap<const Mod*, TESObjectMISC*>*> mods{ REL::SelectVersionID(1108112, 2661617), -0x8 };
 			return *mods;
 		}
 
@@ -146,7 +152,7 @@ namespace RE::BGSMod
 			public Container              // 88
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::BGSMod__Attachment__Mod };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMod__Attachment__Mod, RTTI_AE::BGSMod__Attachment__Mod) };
 			static constexpr auto VTABLE{ VTABLE::BGSMod__Attachment__Mod };
 			static constexpr auto FORM_ID{ ENUM_FORM_ID::kOMOD };
 
@@ -163,12 +169,15 @@ namespace RE::BGSMod
 			};
 			static_assert(sizeof(Data) == 0x20);
 
+			#ifndef F4_GAME_VERSION_AE
+			[[nodiscard]] static BSTHashMap<const Mod*, TESObjectMISC*>& GetAllLooseMods() { return BGSMod::Attachment::GetAllLooseMods(); }
 			static void FindModsForLooseMod(TESObjectMISC* a_looseMod, BSScrapArray<BGSMod::Attachment::Mod*>& a_result)
 			{
 				using func_t = decltype(&Mod::FindModsForLooseMod);
 				REL::Relocation<func_t> func{ REL::ID(410363) };
 				return func(a_looseMod, a_result);
 			}
+			
 
 			void GetData(Data& a_data) const
 			{
@@ -176,6 +185,7 @@ namespace RE::BGSMod
 				REL::Relocation<func_t> func{ REL::ID(33658) };
 				return func(this, a_data);
 			}
+			#endif
 
 			// members
 			BGSAttachParentArray attachParents;                                           // 98
@@ -209,7 +219,7 @@ namespace RE::BGSMod
 			public BGSMod::Container  // 10
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::BGSMod__Template__Item };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMod__Template__Item, RTTI_AE::BGSMod__Template__Item) };
 			static constexpr auto VTABLE{ VTABLE::BGSMod__Template__Item };
 
 			// members
@@ -230,13 +240,13 @@ namespace RE::BGSMod
 			public BaseFormComponent  // 00
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::BGSMod__Template__Items };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMod__Template__Items, RTTI_AE::BGSMod__Template__Items) };
 			static constexpr auto VTABLE{ VTABLE::BGSMod__Template__Items };
 
 			static void CreateInstanceDataForObjectAndExtra(TESBoundObject& a_object, ExtraDataList& a_extra, const INSTANCE_FILTER* a_filter, bool a_useDefault)
 			{
 				using func_t = decltype(&Items::CreateInstanceDataForObjectAndExtra);
-				REL::Relocation<func_t> func{ REL::ID(147297) };
+				REL::Relocation<func_t> func{ REL::SelectVersionID(147297, 2189244) };
 				return func(a_object, a_extra, a_filter, a_useDefault);
 			}
 

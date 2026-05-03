@@ -14,6 +14,12 @@
 #include "RE/NetImmerse/NiPoint3.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BSEffectShaderPropertyColorController;
@@ -160,7 +166,7 @@ namespace RE
 		public BSTextureSet     // 068
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSTextureSet };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSTextureSet, RTTI_AE::BGSTextureSet) };
 		static constexpr auto VTABLE{ VTABLE::BGSTextureSet };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kTXST };
 
