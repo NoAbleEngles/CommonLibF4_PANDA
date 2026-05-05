@@ -168,7 +168,7 @@ namespace RE
 		public:
 			[[nodiscard]] static RendererData* GetSingleton()
 			{
-				REL::Relocation<RendererData**> singleton{ REL::ID(1235449) };
+				REL::Relocation<RendererData**> singleton{ REL::SelectVersionID(1235449, 2704429) };
 				return *singleton;
 			}
 

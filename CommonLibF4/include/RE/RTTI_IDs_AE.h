@@ -15,7 +15,7 @@ namespace RE
 		inline constexpr REL::ID IMemoryStore{ 4858637 };
 		inline constexpr REL::ID IMemoryHeap{ 4858649 };
 		inline constexpr REL::ID ScrapHeap{ 4858641 };
-		
+
 		//Actor
 		inline constexpr REL::ID ActorPackageData{ 4843528 };
 		inline constexpr REL::ID EquippedItemData{ 4848794 };
@@ -100,7 +100,7 @@ namespace RE
 		inline constexpr REL::ID BSLensFlareRenderData{ 4841326 };
 		inline constexpr REL::ID BGSLensFlare{ 4841324 };
 		inline constexpr REL::ID BGSGodRays{ 4840076 };
-		
+
 		//ActorValueInfo
 		inline constexpr REL::ID ActorValueInfo{ 24839932 };
 
@@ -164,5 +164,153 @@ namespace RE
 		inline constexpr REL::ID bhkNPCollisionObject{ 4859767 };
 		inline constexpr REL::ID bhkNPCollisionObjectUnlinked{ 4859771 };
 		inline constexpr REL::ID bhkCharacterController{ 4859801 };
+
+		//BSBound
+		inline constexpr REL::ID BSBound{ 4859587 };
+		inline constexpr REL::ID BSClothExtraData{ 4859827 };
+		inline constexpr REL::ID BSClothUtils__BSTransformSet{ 4859835 };
+		inline constexpr REL::ID BSClothUtils__BSTriShapeBuffer{ 4859837 };
+
+		//BSExtraData
+		inline constexpr REL::ID BSExtraData{ 4839764 };
+		inline constexpr REL::ID ExtraCellWaterType{ 4840038 };
+		inline constexpr REL::ID ExtraLock{ 4840084 };
+		inline constexpr REL::ID ExtraCulledBone{ 4840082 };
+		inline constexpr REL::ID ExtraTeleport{ 4840086 };
+		inline constexpr REL::ID ExtraStartingPosition{ 4840088 };
+		inline constexpr REL::ID ExtraOwnership{ 4840090 };
+		inline constexpr REL::ID ExtraGlobal{ 4840092 };
+		inline constexpr REL::ID ExtraRank{ 4840094 };
+		inline constexpr REL::ID ExtraCount{ 4840096 };
+		inline constexpr REL::ID ExtraLeveledItem{ 4840098 };
+		inline constexpr REL::ID ExtraOutfitItem{ 4840100 };
+		inline constexpr REL::ID ExtraHealth{ 4840102 };
+		inline constexpr REL::ID ExtraTimeLeft{ 4840104 };
+		inline constexpr REL::ID ExtraCharg{ 4840106 };
+		inline constexpr REL::ID ExtraScale{ 4840108 };
+		inline constexpr REL::ID ExtraFollower{ 4840110 };
+		inline constexpr REL::ID ExtraOriginalReference{ 4840112 };
+		inline constexpr REL::ID ExtraPoison{ 4840114 };
+		inline constexpr REL::ID ExtraHeadingTarget{ 4840116 };
+		inline constexpr REL::ID ExtraCreatureAwakeSound{ 4840118 };
+		inline constexpr REL::ID ExtraObjectHealth{ 4840120 };
+		inline constexpr REL::ID ExtraActorCause{ 4840122 };
+		inline constexpr REL::ID ExtraRadioData{ 4840124 };
+		inline constexpr REL::ID ExtraPatrolRefData{ 4840126 };
+		inline constexpr REL::ID ExtraNavMeshPortal{ 4840128 };
+		inline constexpr REL::ID ExtraOcclusionPlaneRefData{ 4840130 };
+		inline constexpr REL::ID ExtraPortalRefData{ 4840132 };
+		inline constexpr REL::ID ExtraSceneData{ 4840134 };
+		inline constexpr REL::ID ExtraBadPosition{ 4840136 };
+		inline constexpr REL::ID ExtraHeadTrackingWeight{ 4840138 };
+		inline constexpr REL::ID ExtraFavorCost{ 4840140 };
+		inline constexpr REL::ID ExtraTextDisplayData{ 4840142 };
+		inline constexpr REL::ID ExtraHorse{ 4840144 };
+		inline constexpr REL::ID ExtraEnchantment{ 4840146 };
+		inline constexpr REL::ID ExtraForcedTarget{ 4840148 };
+		inline constexpr REL::ID ExtraUniqueID{ 4840150 };
+		inline constexpr REL::ID ExtraFlags{ 4840152 };
+		inline constexpr REL::ID ExtraWaterCurrentZoneData{ 4840154 };
+		inline constexpr REL::ID ExtraMissingRefIDs{ 4840156 };
+		inline constexpr REL::ID ExtraRangedDistOverride{ 4840158 };
+		inline constexpr REL::ID ExtraSoundOutputOverride{ 4840160 };
+		inline constexpr REL::ID ExtraEditorID{ 4840162 };
+		inline constexpr REL::ID ExtraFavorite{ 4840164 };
+		inline constexpr REL::ID ExtraPrimitive{ 4840166 };
+		inline constexpr REL::ID ExtraAmmo{ 4840168 };
+		inline constexpr REL::ID ExtraCombinedRefs{ 4840170 };
+		inline constexpr REL::ID ExtraPreVisRefs{ 4840172 };
+		inline constexpr REL::ID ExtraTransitionCellCount{ 4840174 };
+		inline constexpr REL::ID ExtraGIDBuffer{ 4840176 };
+		inline constexpr REL::ID ExtraFromAlias{ 4840180 };
+		inline constexpr REL::ID ExtraOpenCloseActivateRef{ 4840182 };
+		inline constexpr REL::ID ExtraTeleportName{ 4840184 };
+		inline constexpr REL::ID ExtraCachedScale{ 4840186 };
+		inline constexpr REL::ID ExtraLocation{ 4840190 };
+		inline constexpr REL::ID ExtraTresPassPackage{ 4840192 };
+		inline constexpr REL::ID ExtraAttachRef{ 4840194 };
+		inline constexpr REL::ID ExtraAttachRefChildren{ 4840196 };
+		inline constexpr REL::ID ExtraPowerLinks{ 4840198 };
+		inline constexpr REL::ID ExtraReflectedRefs{ 4840200 };
+		inline constexpr REL::ID ExtraReflectorRefs{ 4840202 };
+		inline constexpr REL::ID ExtraWaterLightRefs{ 4840204 };
+		inline constexpr REL::ID ExtraLitWaterRefs{ 4840206 };
+		inline constexpr REL::ID ExtraHasNoRumors{ 4840208 };
+		inline constexpr REL::ID ExtraModelSwap{ 4840210 };
+		inline constexpr REL::ID ExtraRadius{ 4840212 };
+		inline constexpr REL::ID ExtraCombatStyle{ 4840214 };
+		inline constexpr REL::ID ExtraPackageData{ 4840216 };
+		inline constexpr REL::ID ExtraCollisionData{ 4840218 };
+		inline constexpr REL::ID ExtraLargeRefOwnerCells{ 4840220 };
+		inline constexpr REL::ID ExtraLightData{ 4840222 };
+		inline constexpr REL::ID ExtraModRank{ 4840224 };
+		inline constexpr REL::ID ExtraAttachedArrows3D{ 4840226 };
+		inline constexpr REL::ID ExtraAlphaCutoff{ 4840228 };
+		inline constexpr REL::ID ExtraForcedLandingMarker{ 4840230 };
+		inline constexpr REL::ID ExtraCellWaterEnvMap{ 4840232 };
+		inline constexpr REL::ID ExtraKeywords{ 4840234 };
+		inline constexpr REL::ID ExtraMaterialSwap{ 4840236 };
+		inline constexpr REL::ID ExtraProjectedDecalData{ 4840238 };
+		inline constexpr REL::ID ExtraActivateText{ 4840240 };
+		inline constexpr REL::ID ExtraRadioReceiver{ 4840242 };
+		inline constexpr REL::ID ExtraRadioRepeater{ 4840244 };
+		inline constexpr REL::ID ExtraAnimSounds{ 4840246 };
+		inline constexpr REL::ID ExtraActorValueStorage{ 4840248 };
+		inline constexpr REL::ID ExtraObjectBreakable{ 4840250 };
+		inline constexpr REL::ID ExtraInstanceData{ 4840444 };
+		inline constexpr REL::ID BGSObjectInstanceExtra{ 4839762 };
+		inline constexpr REL::ID ExtraStartingWorldOrCell{ 4840416 };
+		inline constexpr REL::ID ExtraAliasInstanceArray{ 4840362 };
+
+		//BSHavok
+		inline constexpr REL::ID bhkWorld{ 4859719 };
+
+		//BSInputDeviceManager
+		inline constexpr REL::ID BSInputDevice{ 4858701 };
+
+		//BSInputEventReceiver
+		inline constexpr REL::ID BSInputEventReceiver{ 4844972 };
+
+		//BSInputEventSingleUser
+		inline constexpr REL::ID BSInputEventSingleUser{ 4844986 };
+
+		//BSInputEventUser
+		inline constexpr REL::ID BSInputEventUser{ 4840884 };
+
+		//BSMTAManager
+		inline constexpr REL::ID BSBatchRenderer{ 4863639 };
+
+		//BSScaleformManager
+		inline constexpr REL::ID BSScaleformManager{ 4860791 };
+
+		//BSShader
+		inline constexpr REL::ID BSReloadShaderI{ 4863139 };
+		inline constexpr REL::ID BSShader{ 4863137 };
+		inline constexpr REL::ID BSUtilityShader{ 4863685 };
+
+		//BSSystemUtility
+		inline constexpr REL::ID BSAwardsSystemUtility{ 4856978 };
+		inline constexpr REL::ID BSSteamAwardsSystemUtility{ 4856976 };
+
+		//BSTEvent
+		inline constexpr REL::ID BSTGlobalEvent{ 4858661 };
+
+		//BSTextureSet
+		inline constexpr REL::ID BSShaderProperty{ 4847582 };
+		inline constexpr REL::ID BSTextureSet{ 4842024 };
+	}
+
+	namespace Ni_RTTI_AE
+	{
+		//BSBound
+		inline constexpr REL::ID BSBound{ 2704312 };
+		inline constexpr REL::ID BSClothExtraData{ 2704836 };
+
+		//BSHavok
+		inline constexpr REL::ID bhkWorld{ 2704769 };
+
+		//BSTextureSet
+		inline constexpr REL::ID BSShaderProperty{ 2712385 };
+		inline constexpr REL::ID BSTextureSet{ 2712388 };
 	}
 }

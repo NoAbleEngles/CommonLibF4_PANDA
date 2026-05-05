@@ -2,6 +2,12 @@
 
 #include "RE/NetImmerse/NiSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class Actor;
@@ -171,21 +177,21 @@ namespace RE
 		static BSPointerHandle<T> CreateHandle(T* a_ptr)
 		{
 			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::CreateHandle);
-			REL::Relocation<func_t> func{ REL::ID(224532) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(224532, 2188375) };
 			return func(a_ptr);
 		}
-
+		
 		static BSPointerHandle<T> GetHandle(T* a_ptr)
 		{
 			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetHandle);
-			REL::Relocation<func_t> func{ REL::ID(901626) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(901626, 2188676) };
 			return func(a_ptr);
 		}
-
+		
 		static bool GetSmartPointer(const BSPointerHandle<T>& a_handle, NiPointer<T>& a_smartPointerOut)
 		{
 			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetSmartPointer);
-			REL::Relocation<func_t> func{ REL::ID(967277) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(967277, 2190940) };
 			return func(a_handle, a_smartPointerOut);
 		}
 	};

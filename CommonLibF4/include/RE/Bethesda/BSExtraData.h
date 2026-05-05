@@ -9,6 +9,12 @@
 #include "RE/Bethesda/MemoryManager.h"
 #include "RE/NetImmerse/NiPoint3.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BGSObjectInstanceExtra;
@@ -277,7 +283,7 @@ namespace RE
 	class __declspec(novtable) BSExtraData
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSExtraData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSExtraData, RTTI_AE::BSExtraData) };
 		static constexpr auto VTABLE{ VTABLE::BSExtraData };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kNone };
 
@@ -319,7 +325,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraCellWaterType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraCellWaterType, RTTI_AE::ExtraCellWaterType) };
 		static constexpr auto VTABLE{ VTABLE::ExtraCellWaterType };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kWaterType };
 
@@ -332,7 +338,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraReferenceHandles };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraReferenceHandles, RTTI_AE::ExtraReferenceHandles) };
 		static constexpr auto VTABLE{ VTABLE::ExtraReferenceHandles };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kReferenceHandle };
 
@@ -346,7 +352,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraHealth };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraHealth, RTTI_AE::ExtraHealth) };
 		static constexpr auto VTABLE{ VTABLE::ExtraHealth };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kHealth };
 
@@ -359,7 +365,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraLock };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraLock, RTTI_AE::ExtraLock) };
 		static constexpr auto VTABLE{ VTABLE::ExtraLock };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kLock };
 
@@ -384,7 +390,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraTeleport };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraTeleport, RTTI_AE::ExtraTeleport) };
 		static constexpr auto VTABLE{ VTABLE::ExtraTeleport };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kTeleport };
 
@@ -397,7 +403,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraInstanceData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraInstanceData, RTTI_AE::ExtraInstanceData) };
 		static constexpr auto VTABLE{ VTABLE::ExtraInstanceData };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kInstanceData };
 
@@ -414,7 +420,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSObjectInstanceExtra };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSObjectInstanceExtra, RTTI_AE::BGSObjectInstanceExtra) };
 		static constexpr auto VTABLE{ VTABLE::BGSObjectInstanceExtra };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kObjectInstance };
 
@@ -432,7 +438,7 @@ namespace RE
 		void AddMod(const BGSMod::Attachment::Mod& a_newMod, std::uint8_t a_attachIndex, std::uint8_t a_rank, bool a_removeInvalidMods)
 		{
 			using func_t = decltype(&BGSObjectInstanceExtra::AddMod);
-			REL::Relocation<func_t> func{ REL::ID(1191757) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1191757, 2189025) };
 			return func(this, a_newMod, a_attachIndex, a_rank, a_removeInvalidMods);
 		}
 
@@ -443,14 +449,14 @@ namespace RE
 		std::uint32_t RemoveInvalidMods(const BGSAttachParentArray* a_baseObjectParents)
 		{
 			using func_t = decltype(&BGSObjectInstanceExtra::RemoveInvalidMods);
-			REL::Relocation<func_t> func{ REL::ID(1548060) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1548060, 2189028) };
 			return func(this, a_baseObjectParents);
 		}
 
 		std::uint32_t RemoveMod(const BGSMod::Attachment::Mod* a_mod, std::uint8_t a_attachIndex)
 		{
 			using func_t = decltype(&BGSObjectInstanceExtra::RemoveMod);
-			REL::Relocation<func_t> func{ REL::ID(1136607) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1136607, 2189027) };
 			return func(this, a_mod, a_attachIndex);
 		}
 
@@ -462,7 +468,7 @@ namespace RE
 		BGSObjectInstanceExtra* ctor(const BGSMod::Template::Item* a_item, TESForm* a_parentForm, const INSTANCE_FILTER* a_filter)
 		{
 			using func_t = decltype(&BGSObjectInstanceExtra::ctor);
-			REL::Relocation<func_t> func{ REL::ID(1222521) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1222521, 2189015) };
 			return func(this, a_item, a_parentForm, a_filter);
 		}
 	};
@@ -472,7 +478,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraStartingWorldOrCell };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraStartingWorldOrCell, RTTI_AE::ExtraStartingWorldOrCell) };
 		static constexpr auto VTABLE{ VTABLE::ExtraStartingWorldOrCell };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kStartingWorldOrCell };
 
@@ -496,7 +502,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraFavorite };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraFavorite, RTTI_AE::ExtraFavorite) };
 		static constexpr auto VTABLE{ VTABLE::ExtraFavorite };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kFavorite };
 
@@ -519,7 +525,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraAliasInstanceArray };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraAliasInstanceArray, RTTI_AE::ExtraAliasInstanceArray) };
 		static constexpr auto VTABLE{ VTABLE::ExtraAliasInstanceArray };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kAliasInstanceArray };
 
@@ -533,7 +539,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraLocation };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraLocation, RTTI_AE::ExtraLocation) };
 		static constexpr auto VTABLE{ VTABLE::ExtraLocation };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kLocation };
 
@@ -546,7 +552,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraMaterialSwap };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraMaterialSwap, RTTI_AE::ExtraMaterialSwap) };
 		static constexpr auto VTABLE{ VTABLE::ExtraMaterialSwap };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kMaterialSwap };
 
@@ -565,7 +571,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraTextDisplayData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraTextDisplayData, RTTI_AE::ExtraTextDisplayData) };
 		static constexpr auto VTABLE{ VTABLE::ExtraTextDisplayData };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kTextDisplayData };
 
@@ -578,7 +584,7 @@ namespace RE
 		[[nodiscard]] const BSFixedStringCS& GetDisplayName(TESBoundObject* a_baseObject)
 		{
 			using func_t = decltype(&ExtraTextDisplayData::GetDisplayName);
-			REL::Relocation<func_t> func{ REL::ID(1523343) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1523343, 2191318) };
 			return func(this, a_baseObject);
 		}
 
@@ -596,7 +602,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraUniqueID };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraUniqueID, RTTI_AE::ExtraUniqueID) };
 		static constexpr auto VTABLE{ VTABLE::ExtraUniqueID };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kUniqueID };
 
@@ -610,7 +616,7 @@ namespace RE
 		public BSExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ExtraPowerLinks };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ExtraPowerLinks, RTTI_AE::ExtraPowerLinks) };
 		static constexpr auto VTABLE{ VTABLE::ExtraPowerLinks };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kPowerLinks };
 
@@ -774,7 +780,7 @@ namespace RE
 		stl::observer<TBO_InstanceData*> CreateInstanceData(TESBoundObject* a_object, bool a_generateName)
 		{
 			using func_t = decltype(&ExtraDataList::CreateInstanceData);
-			REL::Relocation<func_t> func{ REL::ID(1280130) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1280130, 2190185) };
 			return func(this, a_object, a_generateName);
 		}
 
@@ -793,7 +799,7 @@ namespace RE
 		[[nodiscard]] BGSMod::Attachment::Mod* GetLegendaryMod()
 		{
 			using func_t = decltype(&ExtraDataList::GetLegendaryMod);
-			REL::Relocation<func_t> func{ REL::ID(178075) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(178075, 2190180) };
 			return func(this);
 		}
 
@@ -824,14 +830,14 @@ namespace RE
 		void SetDisplayNameFromInstanceData(BGSObjectInstanceExtra* a_instExtra, TESBoundObject* a_object, const BSTSmartPointer<TBO_InstanceData>& a_data)
 		{
 			using func_t = decltype(&ExtraDataList::SetDisplayNameFromInstanceData);
-			REL::Relocation<func_t> func{ REL::ID(457340) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(457340, 2190179) };
 			return func(this, a_instExtra, a_object, a_data);
 		}
 
 		void SetStartingWorldOrCell(TESForm* a_form)
 		{
 			using func_t = decltype(&ExtraDataList::SetStartingWorldOrCell);
-			REL::Relocation<func_t> func{ REL::ID(603621) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(603621, 2190546) };
 			return func(this, a_form);
 		}
 

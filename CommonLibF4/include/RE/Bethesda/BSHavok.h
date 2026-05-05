@@ -2,6 +2,12 @@
 
 #include "RE/NetImmerse/NiObject.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	struct hknpWorldCinfo;
@@ -10,9 +16,9 @@ namespace RE
 		public NiObject  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::bhkWorld };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::bhkWorld, RTTI_AE::bhkWorld) };
 		static constexpr auto VTABLE{ VTABLE::bhkWorld };
-		static constexpr auto Ni_RTTI{ Ni_RTTI::bhkWorld };
+		static constexpr auto Ni_RTTI{ REL::SelectVersionID(Ni_RTTI::bhkWorld, Ni_RTTI_AE::bhkWorld) };
 
 		// add
 		virtual bool Update(std::uint32_t a_updateFlags);  // 28
@@ -21,7 +27,7 @@ namespace RE
 		static bool RemoveObjects(NiAVObject* a_object, bool a_recurse, bool a_force)
 		{
 			using func_t = decltype(&RemoveObjects);
-			REL::Relocation<func_t> func{ REL::ID(1514984) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1514984, 2277721) };
 			return func(a_object, a_recurse, a_force);
 		}
 

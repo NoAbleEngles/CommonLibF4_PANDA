@@ -4,6 +4,12 @@
 #include "RE/Bethesda/BSTArray.h"
 #include "RE/Bethesda/BSTSmallIndexScatterTable.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BSRenderPass;
@@ -20,7 +26,7 @@ namespace RE
 	class BSBatchRenderer
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSBatchRenderer };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSBatchRenderer, RTTI_AE::BSBatchRenderer) };
 		static constexpr auto VTABLE{ VTABLE::BSBatchRenderer };
 
 		enum class GEOMETRY_GROUP_ENUM : std::uint32_t

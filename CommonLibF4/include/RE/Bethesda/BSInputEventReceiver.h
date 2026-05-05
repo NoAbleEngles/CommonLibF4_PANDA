@@ -1,5 +1,11 @@
 #pragma once
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class InputEvent;
@@ -7,7 +13,7 @@ namespace RE
 	class __declspec(novtable) BSInputEventReceiver
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSInputEventReceiver };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSInputEventReceiver, RTTI_AE::BSInputEventReceiver) };
 		static constexpr auto VTABLE{ VTABLE::BSInputEventReceiver };
 
 		// add

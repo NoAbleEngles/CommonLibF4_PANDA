@@ -1,6 +1,12 @@
 #pragma once
 #include "REL/Relocation.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	struct BSStringPool
@@ -122,7 +128,7 @@ namespace RE
 		static BucketTable& GetSingleton()
 		{
 			using func_t = decltype(&BucketTable::GetSingleton);
-			REL::Relocation<func_t> func{ REL::ID(1390486) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1390486, 2268736) };
 			return func();
 		}
 
@@ -140,7 +146,7 @@ namespace RE
 	inline void GetEntry<char>(BSStringPool::Entry*& a_result, const char* a_string, bool a_caseSensitive)
 	{
 		using func_t = decltype(&GetEntry<char>);
-		REL::Relocation<func_t> func{ REL::ID(507142) };
+		REL::Relocation<func_t> func{ REL::SelectVersionID(507142, 2268729) };
 		return func(a_result, a_string, a_caseSensitive);
 	}
 
@@ -148,7 +154,7 @@ namespace RE
 	inline void GetEntry<wchar_t>(BSStringPool::Entry*& a_result, const wchar_t* a_string, bool a_caseSensitive)
 	{
 		using func_t = decltype(&GetEntry<wchar_t>);
-		REL::Relocation<func_t> func{ REL::ID(345043) };
+		REL::Relocation<func_t> func{ REL::SelectVersionID(345043, 2268730) };
 		return func(a_result, a_string, a_caseSensitive);
 	}
 }

@@ -5,6 +5,12 @@
 #include "RE/NetImmerse/NiShadeProperty.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BSEffectShaderData;
@@ -17,9 +23,9 @@ namespace RE
 		public NiShadeProperty  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSShaderProperty };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSShaderProperty, RTTI_AE::BSShaderProperty) };
 		static constexpr auto VTABLE{ VTABLE::BSShaderProperty };
-		static constexpr auto Ni_RTTI{ Ni_RTTI::BSShaderProperty };
+		static constexpr auto Ni_RTTI{ REL::SelectVersionID(Ni_RTTI::BSShaderProperty, Ni_RTTI_AE::BSShaderProperty) };
 
 		enum class TextureTypeEnum;
 
@@ -77,9 +83,9 @@ namespace RE
 		public NiObject  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSTextureSet };
-		static constexpr auto VTABLE{ VTABLE::BSTextureSet };
-		static constexpr auto Ni_RTTI{ Ni_RTTI::BSTextureSet };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSTextureSet, RTTI_AE::BSTextureSet) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLEOffset(0x2C92C38, 0x24a6ec0) };
+		static constexpr auto Ni_RTTI{ REL::SelectVersionID(Ni_RTTI::BSTextureSet, Ni_RTTI_AE::BSTextureSet) };
 
 		// add
 		virtual const BSFixedString* GetTextureFilenameFS(BSShaderProperty::TextureTypeEnum a_type) = 0;                                                  // 28

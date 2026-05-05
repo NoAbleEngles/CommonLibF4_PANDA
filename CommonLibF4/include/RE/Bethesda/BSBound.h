@@ -23,9 +23,9 @@ namespace RE
 		public NiExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSBound };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSBound, RTTI_AE::BSBound) };
 		static constexpr auto VTABLE{ VTABLE::BSBound };
-		static constexpr auto Ni_RTTI{ Ni_RTTI::BSBound };
+		static constexpr auto Ni_RTTI{ REL::SelectVersionID(Ni_RTTI::BSBound, Ni_RTTI_AE::BSBound) };
 
 		// NiExtraData overrides
 		virtual NiExtraData* CreateClone() override { return nullptr; }  // 26
@@ -48,15 +48,15 @@ namespace RE
 		public NiExtraData  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSClothExtraData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSClothExtraData, RTTI_AE::BSClothExtraData) };
 		static constexpr auto VTABLE{ VTABLE::BSClothExtraData };
-		static constexpr auto Ni_RTTI{ Ni_RTTI::BSClothExtraData };
+		static constexpr auto Ni_RTTI{ REL::SelectVersionID(Ni_RTTI::BSClothExtraData, Ni_RTTI_AE::BSClothExtraData) };
 
 		// construction
 		static BSClothExtraData* CreateObject()
 		{
 			using func_t = decltype(&BSClothExtraData::CreateObject);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA6240 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1459640, 2278298) };
 			return func();
 		}
 
@@ -69,84 +69,84 @@ namespace RE
 		void CopyMembers(NiCloningProcess& a_cloneData)
 		{
 			using func_t = decltype(&BSClothExtraData::CopyMembers);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA6390 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1179785, 2278300) };
 			return func(this, a_cloneData);
 		}
 
 		void CreateInstance(NiAVObject& a_root, NiTransform& a_local, NiAVObject* a_target)
 		{
 			using func_t = decltype(&BSClothExtraData::CreateInstance);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA6890 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1470471, 2278305) };
 			return func(this, a_root, a_local, a_target);
 		}
 
 		void ReleaseInstances()
 		{
 			using func_t = decltype(&BSClothExtraData::ReleaseInstances);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA6C00 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(285409, 2278306) };
 			return func(this);
 		}
 
 		void SetWorld(hclBSWorld* a_world)
 		{
 			using func_t = decltype(&BSClothExtraData::SetWorld);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA6C30 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(19064, 2278307) };
 			return func(this, a_world);
 		}
 
 		bool HasWorld() const
 		{
 			using func_t = decltype(&BSClothExtraData::HasWorld);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA6E10 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(524034, 2278308) };
 			return func(this);
 		}
 
 		void Teleport(hkQsTransformf& a_worldXform)
 		{
 			using func_t = decltype(&BSClothExtraData::Teleport);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA6E20 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(962635, 2278309) };
 			return func(this, a_worldXform);
 		}
 
 		void TeleportToMatchBoneTransform(BSFixedString& a_boneName)
 		{
 			using func_t = decltype(&BSClothExtraData::TeleportToMatchBoneTransform);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA6EB0 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(164844, 2278310) };
 			return func(this, a_boneName);
 		}
 
 		void ScaleSkinBones(BSTHashMap<BSFixedString, NiPoint3>& a_scaleByBoneName)
 		{
 			using func_t = decltype(&BSClothExtraData::ScaleSkinBones);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA7920 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(652654, 2278311) };
 			return func(this, a_scaleByBoneName);
 		}
 
 		void* GetTimingData()
 		{
 			using func_t = decltype(&BSClothExtraData::GetTimingData);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA7980 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(120396, 2278312) };
 			return func(this);
 		}
 
 		void SetTargetLODLevel(uint32_t a_level)
 		{
 			using func_t = void (*)(BSClothExtraData*, uint32_t);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA79F0 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(26753, 2278313) };
 			return func(this, a_level);
 		}
 
 		void SetSettleOnTransitionToSim(bool a_enable)
 		{
 			using func_t = decltype(&BSClothExtraData::SetSettleOnTransitionToSim);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA7A40 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(638869, 2278314) };
 			return func(this, a_enable);
 		}
 
 		void GatherDeformationBones(BSTObjectArena<NiAVObject>& a_outBones)
 		{
 			using func_t = decltype(&BSClothExtraData::GatherDeformationBones);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DA7A90 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1250370, 2278315) };
 			return func(this, a_outBones);
 		}
 
@@ -177,8 +177,7 @@ namespace RE
 		inline BSClothExtraData* CreateClothFor3d(NiAVObject& a_root, const char* a_extraName, NiTransform& a_local, NiAVObject* a_target)
 		{
 			using func_t = BSClothExtraData* (*)(NiAVObject&, const char*, NiTransform&, NiAVObject*);
-			// 0x7FF66517AE30 - 0x7FF6633D0000 = 0x1DAAE30
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DAAE30 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1322043, 2278338) };
 			return func(a_root, a_extraName, a_local, a_target);
 		}
 
@@ -186,8 +185,7 @@ namespace RE
 		inline NiExtraData* CacheCurrentAVObjectName(NiAVObject& a_obj)
 		{
 			using func_t = NiExtraData* (*)(NiAVObject&);
-			// 0x7FF66517AF00 - 0x7FF6633D0000 = 0x1DAAF00
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DAAF00 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(697394, 2278339) };
 			return func(a_obj);
 		}
 
@@ -195,8 +193,7 @@ namespace RE
 		inline bool RemoveClothFromWorld(NiAVObject& a_root)
 		{
 			using func_t = bool (*)(NiAVObject&);
-			// 0x7FF66517AF90 - 0x7FF6633D0000 = 0x1DAAF90
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DAAF90 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1481549, 2278340) };
 			return func(a_root);
 		}
 
@@ -208,8 +205,7 @@ namespace RE
 			hkQsTransformf* a_outWorld = nullptr)
 		{
 			using func_t = void (*)(hclClothInstance&, const hkQsTransformf&, const hkQsTransformf&, hkBitField*, hkQsTransformf*);
-			// 0x7FF66517AFC0 - 0x7FF6633D0000 = 0x1DAAFC0
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DAAFC0 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1215473, 2278341) };
 			return func(a_instance, a_fromWorld, a_toWorld, a_mask, a_outWorld);
 		}
 
@@ -218,7 +214,7 @@ namespace RE
 		{
 			using func_t = void (*)(hclClothInstance&, BSTHashMap<BSFixedString, NiPoint3>&);
 			// 0x7FF66517B060 - 0x7FF6633D0000 = 0x1DAB060
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DAB060 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(855934, 2278342) };
 			return func(a_instance, a_scaleByBoneName);
 		}
 
@@ -226,7 +222,7 @@ namespace RE
 		class __declspec(novtable) BSTransformSet
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::BSClothUtils__BSTransformSet };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSClothUtils__BSTransformSet, RTTI_AE::BSClothUtils__BSTransformSet) };
 			static constexpr auto VTABLE{ VTABLE::BSClothUtils__BSTransformSet };
 
 			virtual ~BSTransformSet() = default;  // 00
@@ -319,8 +315,7 @@ namespace RE
 			void Teleport(const hkQsTransformf& a_worldXform, hkBitField* a_mask)
 			{
 				using func_t = void (*)(BSTransformSet*, const hkQsTransformf&, hkBitField*);
-				// RVA from shipping binary (FO4 1.10.163); free function taking this*
-				REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DAB6E0 };
+				REL::Relocation<func_t> func{ REL::SelectVersionID(602408, 2278352) };
 				return func(this, a_worldXform, a_mask);
 			}
 
@@ -328,7 +323,7 @@ namespace RE
 			void GatherDeformationBones(BSTObjectArena<NiAVObject>& a_outBones)
 			{
 				using func_t = void (*)(BSTransformSet*, BSTObjectArena<NiAVObject>&);
-				REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DAB740 };
+				REL::Relocation<func_t> func{ REL::SelectVersionID(30276, 2278362) };
 				return func(this, a_outBones);
 			}
 
@@ -336,7 +331,7 @@ namespace RE
 			void ScaleSkinBones(BSTHashMap<BSFixedString, NiPoint3>& a_scaleByBoneName, const hkBitField& a_mask)
 			{
 				using func_t = void (*)(BSTransformSet*, BSTHashMap<BSFixedString, NiPoint3>&, const hkBitField&);
-				REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1DAB7A0 };
+				REL::Relocation<func_t> func{ REL::SelectVersionID(892857, 2278354) };
 				return func(this, a_scaleByBoneName, a_mask);
 			}
 
@@ -345,7 +340,7 @@ namespace RE
 			{
 				using func_t = bool (*)(const BSTransformSet*);
 				// RVA 0x1C3F3B0 from disassembly
-				REL::Relocation<func_t> func{ REL::Module::get().base() + 0x1C3F3B0 };
+				REL::Relocation<func_t> func{ REL::SelectVersionID(892857, 2278361) };
 				return func(this);
 			}
 		};
@@ -354,7 +349,7 @@ namespace RE
 		class __declspec(novtable) BSTriShapeBuffer
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::BSClothUtils__BSTriShapeBuffer };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSClothUtils__BSTriShapeBuffer, RTTI_AE::BSClothUtils__BSTriShapeBuffer) };
 			static constexpr auto VTABLE{ VTABLE::BSClothUtils__BSTriShapeBuffer };
 
 			virtual ~BSTriShapeBuffer() = default;  // 00
@@ -373,8 +368,7 @@ namespace RE
 		inline bool PlayerClothFilter(BSTransformSet* a_set)
 		{
 			using func_t = bool (*)(BSTransformSet*);
-			// 0x7FF66408DF50 - 0x7FF6633D0000 = 0xCBDF50
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0xCBDF50 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(158914, 2227599) };
 			return func(a_set);
 		}
 
@@ -382,7 +376,7 @@ namespace RE
 		{
 			using func_t = bool (*)(BSTransformSet*);
 			// 0x7FF66408DFA0 - 0x7FF6633D0000 = 0xCBDFA0
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0xCBDFA0 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(770451, 2227600) };
 			return func(a_set);
 		}
 	}

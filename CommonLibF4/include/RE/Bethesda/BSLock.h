@@ -1,5 +1,11 @@
 #pragma once
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BSNonReentrantSpinLock
@@ -18,16 +24,18 @@ namespace RE
 		void lock(const char* a_id = nullptr)
 		{
 			using func_t = decltype(&BSSpinLock::lock);
-			REL::Relocation<func_t> func{ REL::ID(1425657) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1425657, 2231452) };
 			return func(this, a_id);
 		}
 
+		#ifndef F4_GAME_VERSION_AE //not found this in AE
 		[[nodiscard]] bool try_lock()
 		{
 			using func_t = decltype(&BSSpinLock::try_lock);
 			REL::Relocation<func_t> func{ REL::ID(267930) };
 			return func(this);
 		}
+		#endif
 
 		void unlock()
 		{
@@ -54,28 +62,28 @@ namespace RE
 		void lock_read()
 		{
 			using func_t = decltype(&BSReadWriteLock::lock_read);
-			REL::Relocation<func_t> func{ REL::ID(1573164) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1573164, 2267897) };
 			return func(this);
 		}
 
 		void lock_write()
 		{
 			using func_t = decltype(&BSReadWriteLock::lock_write);
-			REL::Relocation<func_t> func{ REL::ID(336186) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(336186, 2267898) };
 			return func(this);
 		}
 
 		[[nodiscard]] bool try_lock_read()
 		{
 			using func_t = decltype(&BSReadWriteLock::try_lock_read);
-			REL::Relocation<func_t> func{ REL::ID(1372435) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1372435, 2267901) };
 			return func(this);
 		}
 
 		[[nodiscard]] bool try_lock_write()
 		{
 			using func_t = decltype(&BSReadWriteLock::try_lock_write);
-			REL::Relocation<func_t> func{ REL::ID(1279453) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1279453, 2267902) };
 			return func(this);
 		}
 
