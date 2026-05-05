@@ -5,6 +5,12 @@
 #include "RE/Bethesda/BSTOptional.h"
 #include "RE/Bethesda/BSTSingleton.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	enum class BSEventNotifyControl : std::int32_t
@@ -190,8 +196,8 @@ namespace RE
 		public BSTSingletonSDM<BSTGlobalEvent>
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSTGlobalEvent };
-		static constexpr auto VTABLE{ RTTI::BSTGlobalEvent };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSTGlobalEvent, RTTI_AE::BSTGlobalEvent) };
+		static constexpr auto VTABLE{ VTABLE::BSTGlobalEvent };
 
 		struct KillSDMEvent
 		{};
@@ -231,7 +237,7 @@ namespace RE
 
 		[[nodiscard]] static BSTGlobalEvent* GetSingleton()
 		{
-			REL::Relocation<BSTGlobalEvent**> singleton{ REL::ID(1424022) };
+			REL::Relocation<BSTGlobalEvent**> singleton{ REL::SelectVersionID(1424022, 4796078) };
 			return *singleton;
 		}
 

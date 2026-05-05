@@ -3,6 +3,12 @@
 #include "RE/Bethesda/BSGraphics.h"
 #include "RE/NetImmerse/NiRefObject.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BSIStream;
@@ -10,8 +16,8 @@ namespace RE
 	struct __declspec(novtable) BSReloadShaderI
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSReloadShaderI };
-		static constexpr auto VTABLE{ VTABLE::BSReloadShaderI };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSReloadShaderI, RTTI_AE::BSReloadShaderI) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLEOffset(0x309A1B8, 0x290dba8) };
 
 		// add
 		virtual void ReloadShaders(BSIStream* a_stream) = 0;  // 00
@@ -23,7 +29,7 @@ namespace RE
 		public BSReloadShaderI  // 010
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSShader };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSShader, RTTI_AE::BSShader) };
 		static constexpr auto VTABLE{ VTABLE::BSShader };
 
 		// add
@@ -54,7 +60,7 @@ namespace RE
 		public BSShader  // 000
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSUtilityShader };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSUtilityShader, RTTI_AE::BSUtilityShader) };
 		static constexpr auto VTABLE{ VTABLE::BSUtilityShader };
 
 		// members

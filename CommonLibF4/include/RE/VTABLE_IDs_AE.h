@@ -22,6 +22,6 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1> EquippedWeaponData{ REL::ID(1527616) };
 		inline constexpr std::array<REL::ID, 1> MagicTarget{ REL::ID(343092) };
 		inline constexpr std::array<REL::ID, 1> ActorState{ REL::ID(614888) };
-		inline constexpr std::array<REL::ID, 1> IPostAnimationChannelUpdateFunctor{ REL::ID(671437) }
+		inline constexpr std::array<REL::ID, 1> IPostAnimationChannelUpdateFunctor{ REL::ID(671437) };
     }
 }

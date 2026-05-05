@@ -1,5 +1,11 @@
 #pragma once
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BSCullingGroup;
@@ -20,7 +26,7 @@ namespace RE
 		static void* Get3DForID(uint32_t id)
 		{
 			using func_t = decltype(&RE::BSPreCulledObjects::Get3DForID);
-			REL::Relocation<func_t> func{ REL::Module::get().base() + 0x280A5E0 };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1087700, 2317330) };
 			return func(id);
 		}
 	

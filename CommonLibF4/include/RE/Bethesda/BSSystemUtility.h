@@ -1,11 +1,17 @@
 #pragma once
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class __declspec(novtable) BSAwardsSystemUtility
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSAwardsSystemUtility };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSAwardsSystemUtility, RTTI_AE::BSAwardsSystemUtility) };
 		static constexpr auto VTABLE{ VTABLE::BSAwardsSystemUtility };
 
 		virtual ~BSAwardsSystemUtility() {}  // 00
@@ -13,7 +19,7 @@ namespace RE
 		[[nodiscard]] static BSAwardsSystemUtility& GetSingleton()
 		{
 			using func_t = decltype(&BSAwardsSystemUtility::GetSingleton);
-			REL::Relocation<func_t> func{ REL::ID(1569384) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1569384, 2255115) };
 			return func();
 		}
 
@@ -31,7 +37,7 @@ namespace RE
 		public BSAwardsSystemUtility  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSSteamAwardsSystemUtility };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSSteamAwardsSystemUtility, RTTI_AE::BSSteamAwardsSystemUtility) };
 		static constexpr auto VTABLE{ VTABLE::BSSteamAwardsSystemUtility };
 
 		virtual ~BSSteamAwardsSystemUtility() {}  // 00

@@ -3,12 +3,18 @@
 #include "RE/Bethesda/InputEvent.h"
 #include "RE/Bethesda/MemoryManager.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class alignas(0x08) BSInputEventUser
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSInputEventUser };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSInputEventUser, RTTI_AE::BSInputEventUser) };
 		static constexpr auto VTABLE{ VTABLE::BSInputEventUser };
 
 		virtual ~BSInputEventUser() = default;  // 00

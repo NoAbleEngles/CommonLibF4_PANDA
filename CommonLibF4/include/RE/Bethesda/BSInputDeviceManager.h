@@ -4,12 +4,18 @@
 #include "RE/Bethesda/BSTSingleton.h"
 #include "RE/Bethesda/InputDevice.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class __declspec(novtable) BSInputDevice
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSInputDevice };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSInputDevice, RTTI_AE::BSInputDevice) };
 		static constexpr auto VTABLE{ VTABLE::BSInputDevice };
 
 		struct InputButton
@@ -55,7 +61,7 @@ namespace RE
 
 		[[nodiscard]] static BSInputDeviceManager* GetSingleton()
 		{
-			REL::Relocation<BSInputDeviceManager**> singleton{ REL::ID(1284221) };
+			REL::Relocation<BSInputDeviceManager**> singleton{ REL::SelectVersionID(1284221, 4807767) };
 			return *singleton;
 		}
 
