@@ -23,5 +23,11 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1> MagicTarget{ REL::ID(343092) };
 		inline constexpr std::array<REL::ID, 1> ActorState{ REL::ID(614888) };
 		inline constexpr std::array<REL::ID, 1> IPostAnimationChannelUpdateFunctor{ REL::ID(671437) };
+
+		//FavoritesManager
+		inline constexpr std::array<REL::ID, 4> FavoritesManager{ REL::ID(453195), REL::ID(892289), REL::ID(4826565), REL::ID(4826566) };
+
+		//FormComponents
+		inline constexpr std::array<REL::ID, 1> BSIMusicType{ REL::ID(4826566) };
     }
 }

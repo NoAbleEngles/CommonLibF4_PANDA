@@ -12,6 +12,12 @@
 #include "RE/NetImmerse/NiRefObject.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BaseFormComponent;
@@ -144,7 +150,7 @@ namespace RE
 	class __declspec(novtable) ActorValueOwner
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::ActorValueOwner };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::ActorValueOwner, RTTI_AE::ActorValueOwner) };
 		static constexpr auto VTABLE{ VTABLE::ActorValueOwner };
 
 		virtual ~ActorValueOwner() = default;  // 00
@@ -175,7 +181,7 @@ namespace RE
 	class BGSNavmeshableObject
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSNavmeshableObject };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSNavmeshableObject, RTTI_AE::BGSNavmeshableObject) };
 
 		// members
 		BSTSmartPointer<NavMesh> embeddedNavmesh;  // 0
@@ -185,7 +191,7 @@ namespace RE
 	class __declspec(novtable) BGSOpenCloseForm
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSOpenCloseForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSOpenCloseForm, RTTI_AE::BGSOpenCloseForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSOpenCloseForm };
 
 		virtual ~BGSOpenCloseForm() = default;  // 00
@@ -216,7 +222,7 @@ namespace RE
 	class __declspec(novtable) BSIMusicTrack
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSIMusicTrack };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSIMusicTrack, RTTI_AE::BSIMusicTrack) };
 		static constexpr auto VTABLE{ VTABLE::BSIMusicTrack };
 
 		enum class MUSIC_STATUS;
@@ -243,7 +249,7 @@ namespace RE
 	class __declspec(novtable) BSIMusicType
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSIMusicType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSIMusicType, RTTI_AE::BSIMusicType) };
 		static constexpr auto VTABLE{ VTABLE::BSIMusicType };
 
 		// add
@@ -273,8 +279,8 @@ namespace RE
 	class __declspec(novtable) BSIReverbType
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSIReverbType };
-		static constexpr auto VTABLE{ VTABLE::BSIReverbType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSIReverbType, RTTI_AE::BSIReverbType) };
+		static constexpr auto VTABLE{ REL::SelectVersionVTABLEOffset(0x2c918e8, 0x24a5c10) };
 
 		// add
 		virtual std::int32_t DoGetRoomLevel() const = 0;        // 00
@@ -294,7 +300,7 @@ namespace RE
 	class __declspec(novtable) BSISoundCategory
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSISoundCategory };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSISoundCategory, RTTI_AE::BSISoundCategory) };
 		static constexpr auto VTABLE{ VTABLE::BSISoundCategory };
 
 		virtual ~BSISoundCategory() = default;  // 00
@@ -321,7 +327,7 @@ namespace RE
 	class __declspec(novtable) BSISoundDescriptor
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSISoundDescriptor };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSISoundDescriptor, RTTI_AE::BSISoundDescriptor) };
 		static constexpr auto VTABLE{ VTABLE::BSISoundDescriptor };
 
 		struct ExtraResolutionData;
@@ -340,7 +346,7 @@ namespace RE
 	class __declspec(novtable) BSISoundOutputModel
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSISoundOutputModel };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSISoundOutputModel, RTTI_AE::BSISoundOutputModel) };
 		static constexpr auto VTABLE{ VTABLE::BSISoundOutputModel };
 
 		struct BSIAttenuationCharacteristics;
@@ -369,7 +375,7 @@ namespace RE
 	class __declspec(novtable) BSMaterialObject
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSMaterialObject };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSMaterialObject, RTTI_AE::BSMaterialObject) };
 		static constexpr auto VTABLE{ VTABLE::BSMaterialObject };
 
 		struct DIRECTIONAL_DATA
@@ -438,7 +444,7 @@ namespace RE
 	struct __declspec(novtable) TESChildCell
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESChildCell };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESChildCell, RTTI_AE::TESChildCell) };
 		static constexpr auto VTABLE{ VTABLE::TESChildCell };
 
 		virtual ~TESChildCell() = default;  // 00
@@ -451,14 +457,14 @@ namespace RE
 	class TESMagicCasterForm
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESMagicCasterForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESMagicCasterForm, RTTI_AE::TESMagicCasterForm) };
 	};
 	static_assert(std::is_empty_v<TESMagicCasterForm>);
 
 	class TESMagicTargetForm
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESMagicTargetForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESMagicTargetForm, RTTI_AE::TESMagicTargetForm) };
 	};
 	static_assert(std::is_empty_v<TESMagicTargetForm>);
 
@@ -466,7 +472,7 @@ namespace RE
 		public BSIntrusiveRefCounted  // 08
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TBO_InstanceData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TBO_InstanceData, RTTI_AE::TBO_InstanceData) };
 		static constexpr auto VTABLE{ VTABLE::TBO_InstanceData };
 
 		virtual ~TBO_InstanceData() = default;  // 00
@@ -496,7 +502,7 @@ namespace RE
 	class __declspec(novtable) BaseFormComponent
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BaseFormComponent };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BaseFormComponent, RTTI_AE::BaseFormComponent) };
 		static constexpr auto VTABLE{ VTABLE::BaseFormComponent };
 
 		virtual ~BaseFormComponent() = default;  // 00
@@ -517,7 +523,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESTexture };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESTexture, RTTI_AE::TESTexture) };
 		static constexpr auto VTABLE{ VTABLE::TESTexture };
 
 		// override (BaseFormComponent)
@@ -539,7 +545,7 @@ namespace RE
 		public TESTexture  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESIcon };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESIcon, RTTI_AE::TESIcon) };
 		static constexpr auto VTABLE{ VTABLE::TESIcon };
 	};
 	static_assert(sizeof(TESIcon) == 0x10);
@@ -641,7 +647,7 @@ namespace RE
 		public NiRefObject  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSAttackData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSAttackData, RTTI_AE::BGSAttackData) };
 		static constexpr auto VTABLE{ VTABLE::BGSAttackData };
 
 		// members
@@ -656,7 +662,7 @@ namespace RE
 		public NiRefObject  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSAttackDataMap };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSAttackDataMap, RTTI_AE::BGSAttackDataMap) };
 		static constexpr auto VTABLE{ VTABLE::BGSAttackDataMap };
 
 		// members
@@ -669,7 +675,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSAttackDataForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSAttackDataForm, RTTI_AE::BGSAttackDataForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSAttackDataForm };
 
 		// members
@@ -689,7 +695,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSBipedObjectForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSBipedObjectForm, RTTI_AE::BGSBipedObjectForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSBipedObjectForm };
 
 		[[nodiscard]] std::uint32_t GetFilledSlots() const noexcept { return bipedModelData.bipedObjectSlots; }
@@ -703,7 +709,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSBlockBashData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSBlockBashData, RTTI_AE::BGSBlockBashData) };
 		static constexpr auto VTABLE{ VTABLE::BGSBlockBashData };
 
 		// members
@@ -716,7 +722,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSCraftingUseSound };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSCraftingUseSound, RTTI_AE::BGSCraftingUseSound) };
 		static constexpr auto VTABLE{ VTABLE::BGSCraftingUseSound };
 
 		// members
@@ -758,7 +764,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSDestructibleObjectForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSDestructibleObjectForm, RTTI_AE::BGSDestructibleObjectForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSDestructibleObjectForm };
 
 		// members
@@ -786,7 +792,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSFeaturedItemMessage };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSFeaturedItemMessage, RTTI_AE::BGSFeaturedItemMessage) };
 		static constexpr auto VTABLE{ VTABLE::BGSFeaturedItemMessage };
 
 		// members
@@ -798,7 +804,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSForcedLocRefType };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSForcedLocRefType, RTTI_AE::BGSForcedLocRefType) };
 		static constexpr auto VTABLE{ VTABLE::BGSForcedLocRefType };
 
 		// members
@@ -810,7 +816,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSIdleCollection };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSIdleCollection, RTTI_AE::BGSIdleCollection) };
 		static constexpr auto VTABLE{ VTABLE::BGSIdleCollection };
 
 		// members
@@ -825,7 +831,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSInstanceNamingRulesForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSInstanceNamingRulesForm, RTTI_AE::BGSInstanceNamingRulesForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSInstanceNamingRulesForm };
 
 		// members
@@ -836,7 +842,7 @@ namespace RE
 	class __declspec(novtable) IKeywordFormBase
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::IKeywordFormBase };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::IKeywordFormBase, RTTI_AE::IKeywordFormBase) };
 		static constexpr auto VTABLE{ VTABLE::IKeywordFormBase };
 
 		virtual ~IKeywordFormBase() = default;  // 00
@@ -871,14 +877,14 @@ namespace RE
 		void AddKeyword(BGSKeyword* a_kw)
 		{
 			using func_t = decltype(&BGSKeywordForm::AddKeyword);
-			REL::Relocation<func_t> func{ REL::ID(762999) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(762999, 2192766) };
 			return func(this, a_kw);
 		}
 
 		void RemoveKeyword(BGSKeyword* a_kw)
 		{
 			using func_t = decltype(&BGSKeywordForm::RemoveKeyword);
-			REL::Relocation<func_t> func{ REL::ID(921694) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(921694, 2192767) };
 			return func(this, a_kw);
 		}
 
@@ -892,7 +898,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSMenuDisplayObject };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMenuDisplayObject, RTTI_AE::BGSMenuDisplayObject) };
 		static constexpr auto VTABLE{ VTABLE::BGSMenuDisplayObject };
 
 		// members
@@ -904,7 +910,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSMessageIcon };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSMessageIcon, RTTI_AE::BGSMessageIcon) };
 		static constexpr auto VTABLE{ VTABLE::BGSMessageIcon };
 
 		// override (BaseFormComponent)
@@ -924,7 +930,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSNativeTerminalForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSNativeTerminalForm, RTTI_AE::BGSNativeTerminalForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSNativeTerminalForm };
 
 		// members
@@ -936,7 +942,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSOverridePackCollection };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSOverridePackCollection, RTTI_AE::BGSOverridePackCollection) };
 		static constexpr auto VTABLE{ VTABLE::BGSOverridePackCollection };
 
 		// members
@@ -968,7 +974,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSPerkRankArray };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSPerkRankArray, RTTI_AE::BGSPerkRankArray) };
 		static constexpr auto VTABLE{ VTABLE::BGSPerkRankArray };
 
 		virtual ~BGSPerkRankArray()  // 00
@@ -985,14 +991,14 @@ namespace RE
 		void AllocatePerkRankArray(std::uint32_t a_count)
 		{
 			using func_t = decltype(&BGSPerkRankArray::AllocatePerkRankArray);
-			REL::Relocation<func_t> func{ REL::ID(888419) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(888419, 2192837) };
 			return func(this, a_count);
 		}
 
 		void ClearPerks(bool a_removeFormUser)
 		{
 			using func_t = decltype(&BGSPerkRankArray::ClearPerks);
-			REL::Relocation<func_t> func{ REL::ID(1247917) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1247917, 2192836) };
 			return func(this, a_removeFormUser);
 		}
 
@@ -1006,7 +1012,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSPickupPutdownSounds };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSPickupPutdownSounds, RTTI_AE::BGSPickupPutdownSounds) };
 		static constexpr auto VTABLE{ VTABLE::BGSPickupPutdownSounds };
 
 		// members
@@ -1019,7 +1025,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSPreloadable };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSPreloadable, RTTI_AE::BGSPreloadable) };
 		static constexpr auto VTABLE{ VTABLE::BGSPreloadable };
 
 		// add
@@ -1031,7 +1037,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSPreviewTransform };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSPreviewTransform, RTTI_AE::BGSPreviewTransform) };
 		static constexpr auto VTABLE{ VTABLE::BGSPreviewTransform };
 
 		// override (BaseFormComponent)
@@ -1051,7 +1057,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSPropertySheet };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSPropertySheet, RTTI_AE::BGSPropertySheet) };
 		static constexpr auto VTABLE{ VTABLE::BGSPropertySheet };
 
 		// members
@@ -1063,7 +1069,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSSkinForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSSkinForm, RTTI_AE::BGSSkinForm) };
 		static constexpr auto VTABLE{ VTABLE::BGSSkinForm };
 
 		// members
@@ -1075,7 +1081,7 @@ namespace RE
 		public BaseFormComponent  // 0
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSSoundTagComponent };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSSoundTagComponent, RTTI_AE::BGSSoundTagComponent) };
 		static constexpr auto VTABLE{ VTABLE::BGSSoundTagComponent };
 
 		// override (BaseFormComponent)
@@ -1117,7 +1123,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESContainer };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESContainer, RTTI_AE::TESContainer) };
 		static constexpr auto VTABLE{ VTABLE::TESContainer };
 
 		// members
@@ -1129,17 +1135,17 @@ namespace RE
 	struct BGSLocalizedStringDL
 	{
 	public:
-		void GetDescription(BSStringT<char>& a_out, const TESForm* a_form) const
-		{
-			using func_t = decltype(&BGSLocalizedStringDL::GetDescription);
-			REL::Relocation<func_t> func{ REL::ID(523613) };
-			return func(this, a_out, a_form);
-		}
+		//void GetDescription(BSStringT<char>& a_out, const TESForm* a_form) const  //Здесь ошибка и это метод класса TESDescription
+		//{
+		//	using func_t = decltype(&BGSLocalizedStringDL::GetDescription);
+		//	REL::Relocation<func_t> func{ REL::SelectVersionID(523613, 2193019) };
+		//	return func(this, a_out, a_form);
+		//}
 
 		[[nodiscard]] BGSLocalizedStrings::ScrapStringBuffer GetText(TESFile& a_file) const
 		{
 			using func_t = decltype(&BGSLocalizedStringDL::GetText);
-			REL::Relocation<func_t> func{ REL::ID(472297) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(472297, 2194238) };
 			return func(this, a_file);
 		}
 
@@ -1152,7 +1158,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESDescription };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESDescription, RTTI_AE::TESDescription) };
 		static constexpr auto VTABLE{ VTABLE::TESDescription };
 
 		// override (BaseFormComponent)
@@ -1168,7 +1174,7 @@ namespace RE
 		void GetDescription(BSStringT<char>& a_outString, const TESForm* a_form = nullptr)
 		{
 			using func_t = decltype(&TESDescription::GetDescription);
-			REL::Relocation<func_t> func{ REL::ID(523613) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(523613, 2193019) };
 			return func(this, a_outString, a_form);
 		}
 
@@ -1183,7 +1189,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESEnchantableForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESEnchantableForm, RTTI_AE::TESEnchantableForm) };
 		static constexpr auto VTABLE{ VTABLE::TESEnchantableForm };
 
 		virtual MagicSystem::CastingType GetCastingType() const { return *castingType; }  // 07
@@ -1204,7 +1210,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESFullName };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESFullName, RTTI_AE::TESFullName) };
 		static constexpr auto VTABLE{ VTABLE::TESFullName };
 
 		// add
@@ -1216,7 +1222,7 @@ namespace RE
 		[[nodiscard]] static auto GetSparseFullNameMap()
 			-> BSTHashMap<const TESForm*, BGSLocalizedString>&
 		{
-			REL::Relocation<BSTHashMap<const TESForm*, BGSLocalizedString>*> sparseFullNameMap{ REL::ID(226372), -0x8 };
+			REL::Relocation<BSTHashMap<const TESForm*, BGSLocalizedString>*> sparseFullNameMap{ REL::SelectVersionID(226372, 2661402), -0x8 };
 			return *sparseFullNameMap;
 		}
 
@@ -1231,7 +1237,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESHealthForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESHealthForm, RTTI_AE::TESHealthForm) };
 		static constexpr auto VTABLE{ VTABLE::TESHealthForm };
 
 		// override (BaseFormComponent)
@@ -1242,7 +1248,7 @@ namespace RE
 		[[nodiscard]] static std::uint32_t GetFormHealth(const TESForm* a_form, const TBO_InstanceData* a_data)
 		{
 			using func_t = decltype(&TESHealthForm::GetFormHealth);
-			REL::Relocation<func_t> func{ REL::ID(1515099) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1515099, 2193227) };
 			return func(a_form, a_data);
 		}
 
@@ -1255,7 +1261,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESModel };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESModel, RTTI_AE::TESModel) };
 		static constexpr auto VTABLE{ VTABLE::TESModel };
 
 		// override (BaseFormComponent)
@@ -1285,7 +1291,7 @@ namespace RE
 		public TESModel  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSBehaviorGraphModel };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSBehaviorGraphModel, RTTI_AE::BGSBehaviorGraphModel) };
 		static constexpr auto VTABLE{ VTABLE::BGSBehaviorGraphModel };
 	};
 	static_assert(sizeof(BGSBehaviorGraphModel) == 0x30);
@@ -1294,7 +1300,7 @@ namespace RE
 		public TESModel  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSModelMaterialSwap };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSModelMaterialSwap, RTTI_AE::BGSModelMaterialSwap) };
 		static constexpr auto VTABLE{ VTABLE::BGSModelMaterialSwap };
 
 		// members
@@ -1307,7 +1313,7 @@ namespace RE
 		public TESModel  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BGSTextureModel };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BGSTextureModel, RTTI_AE::BGSTextureModel) };
 		static constexpr auto VTABLE{ VTABLE::BGSTextureModel };
 	};
 	static_assert(sizeof(BGSTextureModel) == 0x30);
@@ -1316,7 +1322,7 @@ namespace RE
 		public TESModel  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESModelRDT };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESModelRDT, RTTI_AE::TESModelRDT) };
 		static constexpr auto VTABLE{ VTABLE::TESModelRDT };
 	};
 	static_assert(sizeof(TESModelRDT) == 0x30);
@@ -1367,7 +1373,7 @@ namespace RE
 			kFlagKeywords = 0x1000
 		};
 
-		static constexpr auto RTTI{ RTTI::TESActorBaseData };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESActorBaseData, RTTI_AE::TESActorBaseData) };
 		static constexpr auto VTABLE{ VTABLE::TESActorBaseData };
 
 		// add
@@ -1377,20 +1383,20 @@ namespace RE
 
 		bool GetTemplateUseFlag(TemplateFlags a_flag) const {
 			using func_t = decltype(&TESActorBaseData::GetTemplateUseFlag);
-			REL::Relocation<func_t> func{ REL::Offset(0x148850) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1222062, 2192877) };
 			return func(this, a_flag);
 		}
 
 		TESActorBase* GetLeveledTemplateForFlagInHierarchy(TemplateFlags a_flag) {
 			using func_t = decltype(&TESActorBaseData::GetLeveledTemplateForFlagInHierarchy);
-			REL::Relocation<func_t> func{ REL::Offset(0x149690) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1575184, 2192888) };
 			return func(this, a_flag);
 		}
 
 		TESActorBase* GetTemplateForm(TemplateFlags a_flag)
 		{
 			using func_t = decltype(&TESActorBaseData::GetTemplateForm);
-			REL::Relocation<func_t> func{ REL::Offset(0x148890) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1394291, 2192879) };
 			return func(this, a_flag);
 		}
 
@@ -1478,7 +1484,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESAIForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESAIForm, RTTI_AE::TESAIForm) };
 		static constexpr auto VTABLE{ VTABLE::TESAIForm };
 
 		// members
@@ -1491,7 +1497,7 @@ namespace RE
 		public BaseFormComponent  // 000
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESBipedModelForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESBipedModelForm, RTTI_AE::TESBipedModelForm) };
 		static constexpr auto VTABLE{ VTABLE::TESBipedModelForm };
 
 		// members
@@ -1506,7 +1512,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESImageSpaceModifiableForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESImageSpaceModifiableForm, RTTI_AE::TESImageSpaceModifiableForm) };
 		static constexpr auto VTABLE{ VTABLE::TESImageSpaceModifiableForm };
 
 		// members
@@ -1530,7 +1536,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESLeveledList };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESLeveledList, RTTI_AE::TESLeveledList) };
 		static constexpr auto VTABLE{ VTABLE::TESLeveledList };
 
 		// add
@@ -1557,7 +1563,7 @@ namespace RE
 		public TESModel  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESModelTri };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESModelTri, RTTI_AE::TESModelTri) };
 		static constexpr auto VTABLE{ VTABLE::TESModelTri };
 	};
 	static_assert(sizeof(TESModelTri) == 0x30);
@@ -1566,7 +1572,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESProduceForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESProduceForm, RTTI_AE::TESProduceForm) };
 		static constexpr auto VTABLE{ VTABLE::TESProduceForm };
 
 		// members
@@ -1580,7 +1586,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESRaceForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESRaceForm, RTTI_AE::TESRaceForm) };
 		static constexpr auto VTABLE{ VTABLE::TESRaceForm };
 
 		// add
@@ -1612,7 +1618,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESReactionForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESReactionForm, RTTI_AE::TESReactionForm) };
 		static constexpr auto VTABLE{ VTABLE::TESReactionForm };
 
 		// members
@@ -1625,7 +1631,7 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESSpellList };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESSpellList, RTTI_AE::TESSpellList) };
 		static constexpr auto VTABLE{ VTABLE::TESSpellList };
 
 		struct SpellData
@@ -1650,7 +1656,7 @@ namespace RE
 		public TESTexture  // 10
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESTexture1024 };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESTexture1024, RTTI_AE::TESTexture1024) };
 		static constexpr auto VTABLE{ VTABLE::TESTexture1024 };
 
 		// override (TESTexture)
@@ -1662,13 +1668,13 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESValueForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESValueForm, RTTI_AE::TESValueForm) };
 		static constexpr auto VTABLE{ VTABLE::TESValueForm };
 
 		[[nodiscard]] static std::uint32_t GetFormValue(const TESForm* a_form, const TBO_InstanceData* a_data)
 		{
 			using func_t = std::int32_t (*)(const TESForm*, const TBO_InstanceData*);
-			REL::Relocation<func_t> func{ REL::ID(885783) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(885783, 2193435) };
 			return func(a_form, a_data);
 		}
 
@@ -1684,13 +1690,13 @@ namespace RE
 		public BaseFormComponent  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::TESWeightForm };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::TESWeightForm, RTTI_AE::TESWeightForm) };
 		static constexpr auto VTABLE{ VTABLE::TESWeightForm };
 
 		[[nodiscard]] static float GetFormWeight(const TESForm* a_form, const TBO_InstanceData* a_data)
 		{
 			using func_t = float (*)(const TESForm*, const TBO_InstanceData*);
-			REL::Relocation<func_t> func{ REL::ID(1321341) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1321341, 2193446) };
 			return func(a_form, a_data);
 		}
 

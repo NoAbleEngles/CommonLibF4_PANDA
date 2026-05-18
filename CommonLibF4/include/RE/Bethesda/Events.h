@@ -8,6 +8,12 @@
 #include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/Scaleform/GFx/GFx_Player.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class BGSMessage;
@@ -28,7 +34,7 @@ namespace RE
 		static void InitSDM()
 		{
 			using func_t = decltype(&BSThreadEvent::InitSDM);
-			REL::Relocation<func_t> func{ REL::ID(1425097) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1425097, 2268180) };
 			return func();
 		}
 	};
@@ -54,7 +60,7 @@ namespace RE
 	public:
 		[[nodiscard]] static EventSource_t* GetEventSource()
 		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(421543) };
+			REL::Relocation<EventSource_t**> singleton{ REL::SelectVersionID(421543, 2707340) };
 			if (!*singleton) {
 				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
 			}
@@ -77,7 +83,7 @@ namespace RE
 
 		[[nodiscard]] static EventSource_t* GetEventSource()
 		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(344866) };
+			REL::Relocation<EventSource_t**> singleton{ REL::SelectVersionID(344866, 4802332) };
 			if (!*singleton) {
 				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
 			}
@@ -111,7 +117,7 @@ namespace RE
 	public:
 		[[nodiscard]] static EventSource_t* GetEventSource()
 		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(696410) };
+			REL::Relocation<EventSource_t**> singleton{ REL::SelectVersionID(696410, 4803375) };
 			if (!*singleton) {
 				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
 			}
@@ -142,7 +148,7 @@ namespace RE
 	public:
 		[[nodiscard]] static EventSource_t* GetEventSource()
 		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(787908) };
+			REL::Relocation<EventSource_t**> singleton{ REL::SelectVersionID(787908, 4802833) };
 			if (!*singleton) {
 				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
 			}
@@ -189,7 +195,7 @@ namespace RE
 			const InventoryUserUIInterfaceEntry& a_entry)
 		{
 			using func_t = decltype(&InventoryItemDisplayData::ctor);
-			REL::Relocation<func_t> func{ REL::ID(679373) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(679373, 2222612) };
 			return func(this, a_inventoryRef, a_entry);
 		}
 	};
@@ -206,7 +212,7 @@ namespace RE
 		[[nodiscard]] static BSTEventSource<LocksPicked::Event>* GetEventSource()
 		{
 			using func_t = decltype(&LocksPicked::GetEventSource);
-			REL::Relocation<func_t> func{ REL::ID(594991) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(594991, 2249292) };
 			return func();
 		}
 	};
@@ -252,7 +258,7 @@ namespace RE
 
 		[[nodiscard]] static EventSource_t* GetEventSource()
 		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(685859) };
+			REL::Relocation<EventSource_t**> singleton{ REL::SelectVersionID(685859, 4804734) };
 			if (!*singleton) {
 				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
 			}
@@ -273,7 +279,7 @@ namespace RE
 	public:
 		[[nodiscard]] static EventSource_t* GetEventSource()
 		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(1140080) };
+			REL::Relocation<EventSource_t**> singleton{ REL::SelectVersionID(1140080, 4803571) };
 			if (!*singleton) {
 				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
 			}
@@ -341,7 +347,7 @@ namespace RE
 		[[nodiscard]] static BSTEventSource<TESContainerChangedEvent>* GetEventSource()
 		{
 			using func_t = decltype(&TESContainerChangedEvent::GetEventSource);
-			REL::Relocation<func_t> func{ REL::ID(242538) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(242538, 2201832) };
 			return func();
 		}
 
@@ -377,7 +383,7 @@ namespace RE
 		[[nodiscard]] static BSTEventSource<TESFurnitureEvent>* GetEventSource()
 		{
 			using func_t = decltype(&TESFurnitureEvent::GetEventSource);
-			REL::Relocation<func_t> func{ REL::ID(678665) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(678665, 2201844) };
 			return func();
 		}
 
@@ -426,7 +432,7 @@ namespace RE
 			[[nodiscard]] static CellAttachDetachEventSourceSingleton& GetSingleton()
 			{
 				using func_t = decltype(&CellAttachDetachEventSourceSingleton::GetSingleton);
-				REL::Relocation<func_t> func{ REL::ID(862142) };
+				REL::Relocation<func_t> func{ REL::SelectVersionID(862142, 2192250) };
 				return func();
 			}
 

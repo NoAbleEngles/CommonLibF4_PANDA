@@ -1,11 +1,17 @@
 #pragma once
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	struct BSIntrusiveRefCounted
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::BSIntrusiveRefCounted };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::BSIntrusiveRefCounted, RTTI_AE::BSIntrusiveRefCounted) };
 
 		constexpr BSIntrusiveRefCounted() noexcept {}  // NOLINT(modernize-use-equals-default)
 
