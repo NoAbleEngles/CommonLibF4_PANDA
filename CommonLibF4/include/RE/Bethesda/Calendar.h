@@ -2,6 +2,12 @@
 
 #include "RE/Bethesda/BSTSingleton.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	class TESGlobal;
@@ -12,7 +18,7 @@ namespace RE
 	public:
 		[[nodiscard]] static Calendar* GetSingleton()
 		{
-			REL::Relocation<Calendar**> singleton{ REL::ID(1444952) };
+			REL::Relocation<Calendar**> singleton{ REL::SelectVersionID(1444952, 4796378) };
 			return *singleton;
 		}
 

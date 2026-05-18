@@ -298,6 +298,78 @@ namespace RE
 		//BSTextureSet
 		inline constexpr REL::ID BSShaderProperty{ 4847582 };
 		inline constexpr REL::ID BSTextureSet{ 4842024 };
+
+		//BSTSmartPointer
+		inline constexpr REL::ID BSIntrusiveRefCounted{ 4839608 };
+
+		//FavoritesManager
+		inline constexpr REL::ID FavoritesManager{ 4854514 }; 
+
+		//FormComponents
+		inline constexpr REL::ID ActorValueOwner{ 4841772 };
+		inline constexpr REL::ID BGSNavmeshableObject{ 4841338 };
+		inline constexpr REL::ID BGSOpenCloseForm{ 4841382 };
+		inline constexpr REL::ID BSIAudioEffectChain{ 4841194 };
+		inline constexpr REL::ID BSIMusicTrack{ 4841944 };
+		inline constexpr REL::ID BSIMusicType{ 4841976 };
+		inline constexpr REL::ID BSIReverbType{ 4841982 };
+		inline constexpr REL::ID BSISoundCategory{ 4841988 };
+		inline constexpr REL::ID BSISoundDescriptor{ 4841208 };
+		inline constexpr REL::ID BSISoundOutputModel{ 4842000 };
+		inline constexpr REL::ID BSMaterialObject{ 4841918 };
+		inline constexpr REL::ID TESChildCell{ 4841720 };
+		inline constexpr REL::ID TESMagicCasterForm{ 4841500 };
+		inline constexpr REL::ID TESMagicTargetForm{ 4841380 };
+		inline constexpr REL::ID TBO_InstanceData{ 4841462 };
+		inline constexpr REL::ID BaseFormComponent{ 4839768 };
+		inline constexpr REL::ID TESTexture{ 4839890 };
+		inline constexpr REL::ID TESIcon{ 4839888 };
+		inline constexpr REL::ID BGSAttackData{ 4842610 };
+		inline constexpr REL::ID BGSAttackDataMap{ 4842612 };
+		inline constexpr REL::ID BGSAttackDataForm{ 4840588 };
+		inline constexpr REL::ID BGSBipedObjectForm{ 4840590 };
+		inline constexpr REL::ID BGSBlockBashData{ 4840592 };
+		inline constexpr REL::ID BGSCraftingUseSound{ 4839776 };
+		inline constexpr REL::ID BGSDestructibleObjectForm{ 4839898 };
+		inline constexpr REL::ID BGSFeaturedItemMessage{ 4839778 };
+		inline constexpr REL::ID BGSForcedLocRefType{ 4839784 };
+		inline constexpr REL::ID BGSIdleCollection{ 4840600 };
+		inline constexpr REL::ID BGSInstanceNamingRulesForm{ 4839786 };
+		inline constexpr REL::ID IKeywordFormBase{ 4839874 };
+		inline constexpr REL::ID BGSMenuDisplayObject{ 4839940 };
+		inline constexpr REL::ID BGSMessageIcon{ 4839892 };
+		inline constexpr REL::ID BGSNativeTerminalForm{ 4839806 };
+		inline constexpr REL::ID BGSOverridePackCollection{ 4840606 };
+		inline constexpr REL::ID BGSPerkRankArray{ 4840608 };
+		inline constexpr REL::ID BGSPickupPutdownSounds{ 4839900 };
+		inline constexpr REL::ID BGSPreloadable{ 4841308 };
+		inline constexpr REL::ID BGSPreviewTransform{ 4839812 };
+		inline constexpr REL::ID BGSPropertySheet{ 4839814 };
+		inline constexpr REL::ID BGSSkinForm{ 4840614 };
+		inline constexpr REL::ID BGSSoundTagComponent{ 4839818 };
+		inline constexpr REL::ID TESContainer{ 4840652 };
+		inline constexpr REL::ID TESDescription{ 4839902 };
+		inline constexpr REL::ID TESEnchantableForm{ 4840624 };
+		inline constexpr REL::ID TESFullName{ 4839792 };
+		inline constexpr REL::ID TESHealthForm{ 4840626 };
+		inline constexpr REL::ID TESModel{ 4839804 };
+		inline constexpr REL::ID BGSBehaviorGraphModel{ 4842406 };
+		inline constexpr REL::ID BGSModelMaterialSwap{ 4839800 };
+		inline constexpr REL::ID BGSTextureModel{ 4842404 };
+		inline constexpr REL::ID TESModelRDT{ 4840650 };
+		inline constexpr REL::ID TESActorBaseData{ 4840620 };
+		inline constexpr REL::ID TESAIForm{ 4840618 };
+		inline constexpr REL::ID TESBipedModelForm{ 4840474 };
+		inline constexpr REL::ID TESImageSpaceModifiableForm{ 4840638 };
+		inline constexpr REL::ID TESLeveledList{ 4840628 };
+		inline constexpr REL::ID TESModelTri{ 4842270 };
+		inline constexpr REL::ID TESProduceForm{ 4840630 };
+		inline constexpr REL::ID TESRaceForm{ 4840632 };
+		inline constexpr REL::ID TESReactionForm{ 4840636 };
+		inline constexpr REL::ID TESSpellList{ 4840634 };
+		inline constexpr REL::ID TESTexture1024{ 4841842 };
+		inline constexpr REL::ID TESValueForm{ 4839956 };
+		inline constexpr REL::ID TESWeightForm{ 4839894 };
 	}
 
 	namespace Ni_RTTI_AE

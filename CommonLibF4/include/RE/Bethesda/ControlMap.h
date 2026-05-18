@@ -6,6 +6,12 @@
 #include "RE/Bethesda/InputDevice.h"
 #include "RE/Bethesda/UserEvents.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	enum class PC_GAMEPAD_TYPE
@@ -55,28 +61,28 @@ namespace RE
 
 		[[nodiscard]] static ControlMap* GetSingleton()
 		{
-			REL::Relocation<ControlMap**> singleton{ REL::ID(325206) };
+			REL::Relocation<ControlMap**> singleton{ REL::SelectVersionID(325206, 4799307) };
 			return *singleton;
 		}
 
 		bool PopInputContext(UserEvents::INPUT_CONTEXT_ID a_context)
 		{
 			using func_t = decltype(&ControlMap::PopInputContext);
-			REL::Relocation<func_t> func{ REL::ID(74587) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(74587, 2268336) };
 			return func(this, a_context);
 		}
 
 		void PushInputContext(UserEvents::INPUT_CONTEXT_ID a_context)
 		{
 			using func_t = decltype(&ControlMap::PushInputContext);
-			REL::Relocation<func_t> func{ REL::ID(1404410) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1404410, 2268335) };
 			return func(this, a_context);
 		}
 
 		void SetTextEntryMode(bool a_enable)
 		{
 			using func_t = decltype(&ControlMap::SetTextEntryMode);
-			REL::Relocation<func_t> func{ REL::ID(1270079) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(1270079, 4491359) };
 			return func(this, a_enable);
 		}
 
