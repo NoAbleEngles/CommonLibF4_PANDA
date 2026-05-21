@@ -370,6 +370,21 @@ namespace RE
 		inline constexpr REL::ID TESTexture1024{ 4841842 };
 		inline constexpr REL::ID TESValueForm{ 4839956 };
 		inline constexpr REL::ID TESWeightForm{ 4839894 };
+		
+		//FormFactory
+		inline constexpr REL::ID IFormFactory{ 4839872 };
+		inline constexpr REL::ID __DefaultObjectFormFactory{ 4841236 };
+
+		//GameScript
+		inline constexpr REL::ID GameScript__DelayFunctor{ 4854792 };
+		inline constexpr REL::ID GameScript__Logger{ 4854986 };
+		inline constexpr REL::ID GameScript__HandlePolicy{ 4855364 };
+		inline constexpr REL::ID GameScript__ObjectBindPolicy{ 4855366 };
+		inline constexpr REL::ID GameScript__Profiler{ 4855146 };
+		inline constexpr REL::ID GameScript__SavePatcher{ 4855164 };
+		inline constexpr REL::ID GameScript__BasicEventHandler{ 4856666 };
+		inline constexpr REL::ID GameScript__CombatEventHandler{ 4854826 };
+		inline constexpr REL::ID GameScript__BaseHandleReaderWriter{ 4854798 };
 	}
 
 	namespace Ni_RTTI_AE

@@ -2,6 +2,12 @@
 
 #include "RE/Bethesda/TESForms.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	namespace BGSMod::Property
@@ -18,7 +24,7 @@ namespace RE
 	class __declspec(novtable) IFormFactory
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::IFormFactory };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::IFormFactory, RTTI_AE::IFormFactory) };
 		static constexpr auto VTABLE{ VTABLE::IFormFactory };
 
 		virtual ~IFormFactory();  // 00
@@ -36,7 +42,7 @@ namespace RE
 			-> std::span<IFormFactory*, stl::to_underlying(ENUM_FORM_ID::kTotal)>
 		{
 			constexpr auto len = stl::to_underlying(ENUM_FORM_ID::kTotal);
-			REL::Relocation<IFormFactory*(*)[len]> factories{ REL::ID(228366) };
+			REL::Relocation<IFormFactory*(*)[len]> factories{ REL::SelectVersionID(228366, 4796464) };
 			return { *factories };
 		}
 	};
@@ -70,7 +76,7 @@ namespace RE
 		public IFormFactory  // 00
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::__DefaultObjectFormFactory };
+		static constexpr auto RTTI{ REL::SelectVersionID(RTTI::__DefaultObjectFormFactory, RTTI_AE::__DefaultObjectFormFactory) };
 		static constexpr auto VTABLE{ VTABLE::__DefaultObjectFormFactory };
 
 		virtual ~DefaultObjectFormFactory();  // 00

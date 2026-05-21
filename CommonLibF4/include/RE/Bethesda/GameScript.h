@@ -17,6 +17,12 @@
 #include "RE/Bethesda/TESFile.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
+#include "REL/IDSelection.h"
+#include "RE/RTTI_IDs.h"
+#include "RE/RTTI_IDs_AE.h"
+#include "RE/VTABLE_IDs.h"
+#include "RE/VTABLE_IDs_AE.h"
+
 namespace RE
 {
 	template <class F>
@@ -170,7 +176,7 @@ namespace RE
 			public BSIntrusiveRefCounted  // 08
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::GameScript__DelayFunctor };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::GameScript__DelayFunctor,RTTI_AE::GameScript__DelayFunctor) };
 			static constexpr auto VTABLE{ VTABLE::GameScript__DelayFunctor };
 
 			enum class FunctorType
@@ -229,7 +235,7 @@ namespace RE
 			public BSScript::ErrorLogger  // 00
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::GameScript__Logger };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::GameScript__Logger, RTTI_AE::GameScript__Logger) };
 			static constexpr auto VTABLE{ VTABLE::GameScript__Logger };
 
 			// override (BSScript::ErrorLogger)
@@ -245,7 +251,7 @@ namespace RE
 			public BSScript::IObjectHandlePolicy  // 00
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::GameScript__HandlePolicy };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::GameScript__HandlePolicy, RTTI_AE::GameScript__HandlePolicy) };
 			static constexpr auto VTABLE{ VTABLE::GameScript__HandlePolicy };
 
 			// override (BSScript::IObjectHandlePolicy)
@@ -275,7 +281,7 @@ namespace RE
 			void GetInventoryObjFromHandle(std::uint64_t a_cobj, TESObjectREFR*& a_container, std::uint16_t& a_uniqueID, TESObjectREFR*& a_inWorldREFR)
 			{
 				using func_t = decltype(&HandlePolicy::GetInventoryObjFromHandle);
-				REL::Relocation<func_t> func{ REL::ID(66597) };
+				REL::Relocation<func_t> func{ REL::SelectVersionID(66597, 2249989) };
 				return func(this, a_cobj, a_container, a_uniqueID, a_inWorldREFR);
 			}
 
@@ -292,7 +298,7 @@ namespace RE
 			public BSScript::ObjectBindPolicy  // 00
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::GameScript__ObjectBindPolicy };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::GameScript__ObjectBindPolicy, RTTI_AE::GameScript__ObjectBindPolicy) };
 			static constexpr auto VTABLE{ VTABLE::GameScript__ObjectBindPolicy };
 
 			struct QueuedObject
@@ -436,7 +442,7 @@ namespace RE
 			public BSScript::IProfilePolicy  // 000
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::GameScript__Profiler };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::GameScript__Profiler, RTTI_AE::GameScript__Profiler) };
 			static constexpr auto VTABLE{ VTABLE::GameScript__Profiler };
 
 			// override (BSScript::IProfilePolicy)
@@ -460,7 +466,7 @@ namespace RE
 			public BSScript::ISavePatcherInterface  // 0
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::GameScript__SavePatcher };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::GameScript__SavePatcher, RTTI_AE::GameScript__SavePatcher) };
 			static constexpr auto VTABLE{ VTABLE::GameScript__SavePatcher };
 
 			// override (BSScript::ISavePatcherInterface)
@@ -489,7 +495,7 @@ namespace RE
 
 		[[nodiscard]] static GameVM* GetSingleton()
 		{
-			REL::Relocation<GameVM**> singleton{ REL::ID(996227) };
+			REL::Relocation<GameVM**> singleton{ REL::SelectVersionID(996227, 4796420) };
 			return *singleton;
 		}
 
@@ -498,7 +504,7 @@ namespace RE
 		bool QueuePostRenderCall(const BSTSmartPointer<GameScript::DelayFunctor>& a_functor)
 		{
 			using func_t = decltype(&GameVM::QueuePostRenderCall);
-			REL::Relocation<func_t> func{ REL::ID(34412) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(34412, 2251314) };
 			return func(this, a_functor);
 		}
 
@@ -510,7 +516,7 @@ namespace RE
 			const BSTSmartPointer<BSScript::IStackCallbackFunctor>& a_callback)
 		{
 			using func_t = decltype(&GameVM::SendEventToObjectAndRelated);
-			REL::Relocation<func_t> func{ REL::ID(367992) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(367992, 2251344) };
 			return func(this, a_object, a_eventName, a_args, a_filter, a_callback);
 		}
 
@@ -628,8 +634,8 @@ namespace RE
 			public BSTSingletonSDM<BasicEventHandler>                            // 1F0
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::GameScript__BasicEventHandler };
-			static constexpr auto VTABLE{ VTABLE::GameScript__BasicEventHandler };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::GameScript__BasicEventHandler, RTTI_AE::GameScript__BasicEventHandler) };
+			static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::GameScript__BasicEventHandler, VTABLE_AE::GameScript__BasicEventHandler) };
 
 			// members
 			GameVM* gameVM;                                 // 1F8
@@ -647,8 +653,8 @@ namespace RE
 			public BSTSingletonSDM<CombatEventHandler>      // 18
 		{
 		public:
-			static constexpr auto RTTI{ RTTI::GameScript__CombatEventHandler };
-			static constexpr auto VTABLE{ VTABLE::GameScript__CombatEventHandler };
+			static constexpr auto RTTI{ REL::SelectVersionID(RTTI::GameScript__CombatEventHandler, RTTI_AE::GameScript__CombatEventHandler) };
+			static constexpr auto VTABLE{ REL::SelectVersionVTABLE(VTABLE::GameScript__CombatEventHandler, VTABLE_AE::GameScript__CombatEventHandler) };
 
 			// members
 			BSTSmartPointer<BSScript::IVirtualMachine> vm;                                                                  // 20
@@ -687,7 +693,7 @@ namespace RE
 		inline void BindCObject(const BSTSmartPointer<BSScript::Object>& a_scriptObj, const RefrOrInventoryObj& a_cobj, BSScript::IVirtualMachine& a_vm)
 		{
 			using func_t = decltype(&BindCObject);
-			REL::Relocation<func_t> func{ REL::ID(81787) };
+			REL::Relocation<func_t> func{ REL::SelectVersionID(81787, 2249773) };
 			return func(a_scriptObj, a_cobj, a_vm);
 		}
 
@@ -695,7 +701,7 @@ namespace RE
 			public RE::BSScript::IHandleReaderWriter
 		{
 		public:
-			inline static constexpr auto RTTI = { RTTI::GameScript__BaseHandleReaderWriter };
+			inline static constexpr auto RTTI = { REL::SelectVersionID(RTTI::GameScript__BaseHandleReaderWriter, RTTI_AE::GameScript__BaseHandleReaderWriter) };
 			inline static constexpr auto VTABLE = { VTABLE::GameScript__BaseHandleReaderWriter };
 
 			~BaseHandleReaderWriter() override;                                                       // 0
